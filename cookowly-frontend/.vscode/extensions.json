@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "oderwat.indent-rainbow",
+    "ms-playwright.playwright",
+    "bradlc.vscode-tailwindcss",
+    "gruntfuggly.todo-tree",
+    "esbenp.prettier-vscode",
+    "dsznajder.es7-react-js-snippets",
+    "xabikos.javascriptsnippets",
+    "eamodio.gitlens",
+    "streetsidesoftware.code-spell-checker",
+    "adpyke.codesnap"
+  ]
+}
