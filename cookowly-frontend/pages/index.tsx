@@ -5,7 +5,7 @@ function Home() {
   const [enabled, setEnabled] = useState<boolean>(false);
   return (
     <>
-      <h1 className="bg-red-500 text-blue-500" data-pw="hello-world">
+      <h1 className="bg-red-400 text-blue-500" data-pw="hello-world">
         Hello Cookwoly
       </h1>
       <Switch
