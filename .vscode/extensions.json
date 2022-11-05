@@ -10,6 +10,7 @@
     "xabikos.javascriptsnippets",
     "eamodio.gitlens",
     "streetsidesoftware.code-spell-checker",
-    "adpyke.codesnap"
+    "adpyke.codesnap",
+    "aaron-bond.better-comments"
   ]
 }
