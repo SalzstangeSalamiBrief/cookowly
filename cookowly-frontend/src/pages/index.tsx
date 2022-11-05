@@ -1,5 +1,6 @@
 import { Switch } from '@headlessui/react';
 import { useState } from 'react';
+import { BeakerIcon } from '@heroicons/react/24/solid';
 import { PrimaryButton } from '../components/PrimaryButton';
 
 function Home() {
@@ -21,10 +22,16 @@ function Home() {
           } inline-block h-4 w-4 transform rounded-full bg-white transition`}
         />
       </Switch>
+      {/* <div className="flex"> */}
+      <PrimaryButton text="lg" size="lg" icon={<BeakerIcon />} />
       <PrimaryButton text="lg" size="lg" />
+      <PrimaryButton text="default" icon={<BeakerIcon />} />
       <PrimaryButton text="default" />
+      <PrimaryButton text="md" size="md" icon={<BeakerIcon />} />
       <PrimaryButton text="md" size="md" />
+      <PrimaryButton text="sm" size="sm" icon={<BeakerIcon />} />
       <PrimaryButton text="sm" size="sm" />
+      {/* </div> */}
     </>
   );
 }

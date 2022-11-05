@@ -20,7 +20,7 @@ export function PrimaryButton({
   const styles = `${sizeStyles[size]} bg-primary-700 hover:bg-primary-800 active:bg-primary-900 text-primary-50 rounded`;
   return (
     <button className={styles} type={isSubmitButton ? 'submit' : 'button'} disabled={isDisabled}>
-      {icon && <span className="mr-4">{icon}</span>}
+      {icon && <span className="mr-4 h-6 w-6 inline-block align-middle">{icon}</span>}
       {text}
     </button>
   );
