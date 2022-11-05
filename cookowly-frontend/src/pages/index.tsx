@@ -1,5 +1,6 @@
 import { Switch } from '@headlessui/react';
 import { useState } from 'react';
+import { PrimaryButton } from '../components/PrimaryButton';
 
 function Home() {
   const [enabled, setEnabled] = useState<boolean>(false);
@@ -20,6 +21,10 @@ function Home() {
           } inline-block h-4 w-4 transform rounded-full bg-white transition`}
         />
       </Switch>
+      <PrimaryButton text="lg" size="lg" />
+      <PrimaryButton text="default" />
+      <PrimaryButton text="md" size="md" />
+      <PrimaryButton text="sm" size="sm" />
     </>
   );
 }
