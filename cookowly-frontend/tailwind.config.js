@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /** @type {import('tailwindcss').Config} */
 
 const dangerColors = {
@@ -90,10 +91,7 @@ module.exports = {
         ...warningColors,
         ...successColors,
       },
-      fontFamily: {
-        title: 'Merriweather',
-        content: 'Poppins',
-      },
+      fontFamily: { title: 'Merriweather', content: 'Poppins' },
       spacing: {},
     },
   },
