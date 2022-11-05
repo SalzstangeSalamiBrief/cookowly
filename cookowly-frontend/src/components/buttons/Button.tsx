@@ -1,21 +1,20 @@
-import { buttonSizeStyles, IButtonProps } from './ButtonProps';
-
-interface IPrimaryButtonProps {
-  icon?: JSX.Element | null;
-}
+import { getButtonStyles, IButtonProps } from './ButtonProps';
 // TODO HOVER EFFECTS
 
-export function PrimaryButton({
+export function Button({
   text,
+  onClick,
   size = 'md',
   isSubmitButton = false,
   isDisabled = false,
   icon = null,
-  onClick,
-}: IPrimaryButtonProps & IButtonProps) {
-  const styles = `${buttonSizeStyles[size]} bg-primary-700 hover:bg-primary-800 active:bg-primary-900 text-primary-50 rounded`;
+  as = 'button',
+  variant = 'primary',
+}: IButtonProps) {
+  const styles = getButtonStyles(size, variant);
+  const As = as;
   return (
-    <button
+    <As
       className={styles}
       type={isSubmitButton ? 'submit' : 'button'}
       disabled={isDisabled}
@@ -23,6 +22,6 @@ export function PrimaryButton({
     >
       {icon && <span className="mr-4 h-6 w-6 inline-block align-middle">{icon}</span>}
       {text}
-    </button>
+    </As>
   );
 }

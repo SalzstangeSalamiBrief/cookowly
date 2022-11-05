@@ -21,6 +21,7 @@
     "@typescript-eslint/no-unused-vars": "error",
     "no-unused-vars": "off",
     "object-curly-newline": ["error", { "minProperties": 3 }],
+    "implicit-arrow-linebreak": "off",
     "import/extensions": [
       "error",
       "ignorePackages",

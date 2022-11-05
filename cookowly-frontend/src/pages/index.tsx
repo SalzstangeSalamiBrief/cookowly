@@ -1,9 +1,8 @@
 import { Switch } from '@headlessui/react';
 import { useState } from 'react';
 import { BeakerIcon } from '@heroicons/react/24/solid';
-import { PrimaryButton } from '../components/buttons/PrimaryButton';
-import { GhostButton } from '../components/buttons/GhostButton';
-import { ActionButton } from '../components/buttons/ActionButton';
+import { Button } from '../components/buttons/Button';
+import { IconButton } from '../components/buttons/IconButton';
 
 function Home() {
   const [enabled, setEnabled] = useState<boolean>(false);
@@ -25,34 +24,57 @@ function Home() {
         />
       </Switch>
       <div>
-        <PrimaryButton text="lg" size="lg" icon={<BeakerIcon />} />
-        <PrimaryButton text="lg" size="lg" />
-        <PrimaryButton text="default" icon={<BeakerIcon />} />
-        <PrimaryButton text="default" />
-        <PrimaryButton text="md" size="md" icon={<BeakerIcon />} />
-        <PrimaryButton text="md" size="md" />
-        <PrimaryButton text="sm" size="sm" icon={<BeakerIcon />} />
-        <PrimaryButton text="sm" size="sm" />
+        <Button text="lg" size="lg" icon={<BeakerIcon />} />
+        <Button text="lg" size="lg" />
+        <Button text="default" icon={<BeakerIcon />} />
+        <Button text="default" />
+        <Button text="md" size="md" icon={<BeakerIcon />} />
+        <Button text="md" size="md" />
+        <Button text="sm" size="sm" icon={<BeakerIcon />} />
+        <Button text="sm" size="sm" />
       </div>
       <div>
-        <GhostButton text="lg" size="lg" icon={<BeakerIcon />} />
-        <GhostButton text="lg" size="lg" />
-        <GhostButton text="default" icon={<BeakerIcon />} />
-        <GhostButton text="default" />
-        <GhostButton text="md" size="md" icon={<BeakerIcon />} />
-        <GhostButton text="md" size="md" />
-        <GhostButton text="sm" size="sm" icon={<BeakerIcon />} />
-        <GhostButton text="sm" size="sm" />
+        <Button variant="primary" text="lg" size="lg" icon={<BeakerIcon />} as="button" />
+        <Button variant="primary" text="lg" size="lg" as="button" />
+        <Button variant="primary" text="default" icon={<BeakerIcon />} as="button" />
+        <Button variant="primary" text="default" as="button" />
+        <Button variant="primary" text="md" size="md" icon={<BeakerIcon />} as="button" />
+        <Button variant="primary" text="md" size="md" as="button" />
+        <Button variant="primary" text="sm" size="sm" icon={<BeakerIcon />} as="button" />
+        <Button variant="primary" text="sm" size="sm" as="button" />
       </div>
       <div>
-        <ActionButton text="lg" size="lg" icon={<BeakerIcon />} />
-        <ActionButton text="lg" size="lg" />
-        <ActionButton text="default" icon={<BeakerIcon />} />
-        <ActionButton text="default" />
-        <ActionButton text="md" size="md" icon={<BeakerIcon />} />
-        <ActionButton text="md" size="md" />
-        <ActionButton text="sm" size="sm" icon={<BeakerIcon />} />
-        <ActionButton text="sm" size="sm" />
+        <Button variant="primary" text="lg" size="lg" icon={<BeakerIcon />} as="a" />
+        <Button variant="primary" text="lg" size="lg" as="a" />
+        <Button variant="primary" text="default" icon={<BeakerIcon />} as="a" />
+        <Button variant="primary" text="default" as="a" />
+        <Button variant="primary" text="md" size="md" icon={<BeakerIcon />} as="a" />
+        <Button variant="primary" text="md" size="md" as="a" />
+        <Button variant="primary" text="sm" size="sm" icon={<BeakerIcon />} as="a" />
+        <Button variant="primary" text="sm" size="sm" as="a" />
+      </div>
+      <div>
+        <Button variant="ghost" text="lg" size="lg" icon={<BeakerIcon />} />
+        <Button variant="ghost" text="lg" size="lg" />
+        <Button variant="ghost" text="default" icon={<BeakerIcon />} />
+        <Button variant="ghost" text="default" />
+        <Button variant="ghost" text="md" size="md" icon={<BeakerIcon />} />
+        <Button variant="ghost" text="md" size="md" />
+        <Button variant="ghost" text="sm" size="sm" icon={<BeakerIcon />} />
+        <Button variant="ghost" text="sm" size="sm" />
+      </div>
+      <div>
+        <Button variant="action" text="lg" size="lg" icon={<BeakerIcon />} />
+        <Button variant="action" text="lg" size="lg" />
+        <Button variant="action" text="default" icon={<BeakerIcon />} />
+        <Button variant="action" text="default" />
+        <Button variant="action" text="md" size="md" icon={<BeakerIcon />} />
+        <Button variant="action" text="md" size="md" />
+        <Button variant="action" text="sm" size="sm" icon={<BeakerIcon />} />
+        <Button variant="action" text="sm" size="sm" />
+      </div>
+      <div>
+        <IconButton icon={<BeakerIcon />} ariaLabel="myLabel" />
       </div>
     </>
   );
