@@ -1,7 +1,9 @@
 import { Switch } from '@headlessui/react';
 import { useState } from 'react';
 import { BeakerIcon } from '@heroicons/react/24/solid';
-import { PrimaryButton } from '../components/PrimaryButton';
+import { PrimaryButton } from '../components/buttons/PrimaryButton';
+import { GhostButton } from '../components/buttons/GhostButton';
+import { ActionButton } from '../components/buttons/ActionButton';
 
 function Home() {
   const [enabled, setEnabled] = useState<boolean>(false);
@@ -22,16 +24,36 @@ function Home() {
           } inline-block h-4 w-4 transform rounded-full bg-white transition`}
         />
       </Switch>
-      {/* <div className="flex"> */}
-      <PrimaryButton text="lg" size="lg" icon={<BeakerIcon />} />
-      <PrimaryButton text="lg" size="lg" />
-      <PrimaryButton text="default" icon={<BeakerIcon />} />
-      <PrimaryButton text="default" />
-      <PrimaryButton text="md" size="md" icon={<BeakerIcon />} />
-      <PrimaryButton text="md" size="md" />
-      <PrimaryButton text="sm" size="sm" icon={<BeakerIcon />} />
-      <PrimaryButton text="sm" size="sm" />
-      {/* </div> */}
+      <div>
+        <PrimaryButton text="lg" size="lg" icon={<BeakerIcon />} />
+        <PrimaryButton text="lg" size="lg" />
+        <PrimaryButton text="default" icon={<BeakerIcon />} />
+        <PrimaryButton text="default" />
+        <PrimaryButton text="md" size="md" icon={<BeakerIcon />} />
+        <PrimaryButton text="md" size="md" />
+        <PrimaryButton text="sm" size="sm" icon={<BeakerIcon />} />
+        <PrimaryButton text="sm" size="sm" />
+      </div>
+      <div>
+        <GhostButton text="lg" size="lg" icon={<BeakerIcon />} />
+        <GhostButton text="lg" size="lg" />
+        <GhostButton text="default" icon={<BeakerIcon />} />
+        <GhostButton text="default" />
+        <GhostButton text="md" size="md" icon={<BeakerIcon />} />
+        <GhostButton text="md" size="md" />
+        <GhostButton text="sm" size="sm" icon={<BeakerIcon />} />
+        <GhostButton text="sm" size="sm" />
+      </div>
+      <div>
+        <ActionButton text="lg" size="lg" icon={<BeakerIcon />} />
+        <ActionButton text="lg" size="lg" />
+        <ActionButton text="default" icon={<BeakerIcon />} />
+        <ActionButton text="default" />
+        <ActionButton text="md" size="md" icon={<BeakerIcon />} />
+        <ActionButton text="md" size="md" />
+        <ActionButton text="sm" size="sm" icon={<BeakerIcon />} />
+        <ActionButton text="sm" size="sm" />
+      </div>
     </>
   );
 }
