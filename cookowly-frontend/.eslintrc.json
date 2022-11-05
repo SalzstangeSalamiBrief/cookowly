@@ -20,7 +20,7 @@
     "react/require-default-props": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "no-unused-vars": "off",
-    "object-curly-newline": ["error", { "minProperties": 5 }],
+    "object-curly-newline": ["error", { "minProperties": 3 }],
     "import/extensions": [
       "error",
       "ignorePackages",
