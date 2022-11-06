@@ -11,7 +11,8 @@
     "playwright:debug": "npx playwright test --debug",
     "playwright:report": "npx playwright show-report",
     "jsonServer": "json-server --watch ./json-server-db/db.json --port 8081",
-    "prepare": "cd .. && husky install"
+    "prepare": "cd .. && husky install",
+    "test-ct": "playwright test -c playwright-ct.config.ts"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.3",
@@ -22,8 +23,9 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.3.1",
+    "@playwright/experimental-ct-react": "^1.27.1",
     "@playwright/test": "^1.27.1",
-    "@types/node": "18.8.5",
+    "@types/node": "^18.8.5",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.42.0",

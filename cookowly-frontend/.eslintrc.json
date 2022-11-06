@@ -20,7 +20,13 @@
     "react/require-default-props": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "no-unused-vars": "off",
-    "object-curly-newline": ["error", { "minProperties": 3 }],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": { "consistent": true, "multiline": true },
+        "ObjectPattern": { "consistent": true, "multiline": true }
+      }
+    ],
     "implicit-arrow-linebreak": "off",
     "import/extensions": [
       "error",
@@ -32,6 +38,7 @@
         "tsx": "never"
       }
     ],
+    "max-len": ["error", 120],
     "import/no-extraneous-dependencies": [
       "error",
       { "devDependencies": true, "optionalDependencies": false, "peerDependencies": false }

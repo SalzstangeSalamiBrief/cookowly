@@ -7,7 +7,7 @@ interface IBaseButtonProps {
   isSubmitButton?: boolean;
   isDisabled?: boolean;
   onClick?: () => void;
-  as?: 'button' | 'a'; // TODO ReactRouterLink
+  as?: 'button' | 'a';
   variant?: ButtonVariants;
   dataPW?: string | null;
 }
@@ -24,13 +24,13 @@ export interface IButtonProps extends IBaseButtonProps {
   icon?: React.ReactElement | null;
 }
 
-const buttonSizeStyles: { [key in Size]: string } = {
+export const buttonSizeStyles: { [key in Size]: string } = {
   lg: 'px-8 py-4',
   md: 'px-4 py-2',
   sm: 'px-2 py-1',
 };
 
-const buttonVariantStyles: { [key in ButtonVariants]: string } = {
+export const buttonVariantStyles: { [key in ButtonVariants]: string } = {
   primary: 'bg-primary-700 hover:bg-primary-800 active:bg-primary-900 text-primary-50 rounded',
   action: 'hover:bg-neutral-800 active:bg-neutral-700 text-primary-50 rounded',
   ghost: 'hover:bg-neutral-800 active:bg-neutral-700 text-primary-50 rounded border border-primary-50',

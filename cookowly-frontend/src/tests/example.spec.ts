@@ -7,3 +7,5 @@ test('homepage has Playwright in title and get started link linking to the intro
   const element = await page.locator('[data-pw="hello-world"]');
   await expect(element).toHaveClass('bg-red-500 text-blue-500');
 });
+
+// TODO https://playwright.dev/docs/accessibility-testing
