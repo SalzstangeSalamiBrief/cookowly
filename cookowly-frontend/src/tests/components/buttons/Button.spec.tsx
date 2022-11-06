@@ -20,19 +20,23 @@ const testCombinations = sizes.reduce((previous, size) => {
     text: 'Lorem Ipsum',
   }));
   return [...previous, ...variantCombinations];
-}, [] as { size: Size; variant: ButtonVariants; text: string; icon?: React.ReactElement }[]);
+}, [] as { size: Size; variant: ButtonVariants; text: string }[]);
 
 // TODO CANNOT TEST FOR CHILDREN?
-testCombinations.forEach(({ size, variant, text, icon = null }) => {
+testCombinations.forEach(({ size, variant, text }) => {
   test(`Should mount component with text '${text}', size '${size}', variant '${variant}'`, async ({ mount }) => {
-    const buttonComponent = await mount(<Button text={text} size={size} variant={variant} />);
+    // spy for the onClick listener
+    let gotSpyExecuted = false;
+    const executeSpy = () => {
+      gotSpyExecuted = true;
+    };
+
+    const buttonComponent = await mount(<Button text={text} size={size} variant={variant} onClick={executeSpy} />);
     await expect(buttonComponent).toContainText(text);
     const classesToExpect = getButtonStyles(size, variant);
     await expect(buttonComponent).toHaveClass(classesToExpect);
-    await expect(buttonComponent).toHaveAttribute('data-pw', 'button'); // TODO
-    const iconOfTheButton = await buttonComponent.locator('span svg');
-    await expect(iconOfTheButton).toHaveLength(icon ? 0 : 1);
+    await expect(buttonComponent).toHaveAttribute('data-pw', 'button');
+    await buttonComponent.click();
+    await expect(gotSpyExecuted).toBe(true);
   });
 });
-
-// TODO COVERAGE
