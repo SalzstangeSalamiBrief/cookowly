@@ -10,6 +10,7 @@ export function Button({
   icon = null,
   as = 'button',
   variant = 'primary',
+  dataPW = null,
 }: IButtonProps) {
   const styles = getButtonStyles(size, variant);
   const As = as;
@@ -19,6 +20,7 @@ export function Button({
       type={isSubmitButton ? 'submit' : 'button'}
       disabled={isDisabled}
       onClick={() => (onClick ? onClick() : null)}
+      data-pw={`button${dataPW ? `-${dataPW}` : ''}`}
     >
       {icon && <span className="mr-4 h-6 w-6 inline-block align-middle">{icon}</span>}
       {text}

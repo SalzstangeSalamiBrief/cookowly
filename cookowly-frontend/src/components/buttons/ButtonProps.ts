@@ -9,11 +9,13 @@ interface IBaseButtonProps {
   onClick?: () => void;
   as?: 'button' | 'a'; // TODO ReactRouterLink
   variant?: ButtonVariants;
+  dataPW?: string | null;
 }
 
 export interface IIconButtonProps extends IBaseButtonProps {
   ariaLabel: string;
   icon: React.ReactElement;
+  title?: string;
 }
 
 export interface IButtonProps extends IBaseButtonProps {

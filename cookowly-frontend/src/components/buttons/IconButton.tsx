@@ -10,6 +10,8 @@ export function IconButton({
   isDisabled = false,
   as = 'button',
   variant = 'primary',
+  title = '',
+  dataPW = null,
 }: IIconButtonProps) {
   const styles = getButtonStyles(size, variant);
   const As = as;
@@ -20,6 +22,8 @@ export function IconButton({
       type={isSubmitButton ? 'submit' : 'button'}
       disabled={isDisabled}
       onClick={() => (onClick ? onClick() : null)}
+      title={title || ariaLabel}
+      data-pw={`icon-button${dataPW ? `-${dataPW}` : ''}`}
     >
       {clonedIcon}
     </As>
