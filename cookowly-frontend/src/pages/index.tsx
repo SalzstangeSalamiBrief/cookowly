@@ -24,7 +24,7 @@ function Home() {
         />
       </Switch>
       <div>
-        <Button text="lg" size="lg" icon={<BeakerIcon />} />
+        <Button text="lg" size="lg" icon={<BeakerIcon />} dataPW="my-button" />
         <Button text="lg" size="lg" />
         <Button text="default" icon={<BeakerIcon />} />
         <Button text="default" />

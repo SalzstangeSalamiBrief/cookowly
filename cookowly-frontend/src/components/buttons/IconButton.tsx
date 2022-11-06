@@ -1,5 +1,5 @@
 import { cloneElement } from 'react';
-import { getButtonStyles, IIconButtonProps } from './ButtonProps';
+import { getButtonStyles, getDataPWAttribute, IIconButtonProps } from './ButtonProps';
 
 export function IconButton({
   ariaLabel,
@@ -16,6 +16,7 @@ export function IconButton({
   const styles = getButtonStyles(size, variant);
   const As = as;
   const clonedIcon = cloneElement(icon, { className: 'h-6 w-6' });
+  const dataPWValue = getDataPWAttribute(dataPW);
   const iconButton = (
     <As
       className={styles}
@@ -23,7 +24,7 @@ export function IconButton({
       disabled={isDisabled}
       onClick={() => (onClick ? onClick() : null)}
       title={title || ariaLabel}
-      data-pw={`icon-button${dataPW ? `-${dataPW}` : ''}`}
+      data-pw={dataPWValue}
     >
       {clonedIcon}
     </As>

@@ -38,3 +38,5 @@ export const buttonVariantStyles: { [key in ButtonVariants]: string } = {
 
 export const getButtonStyles = (size: Size, variant: ButtonVariants) =>
   `${buttonSizeStyles[size]} ${buttonVariantStyles[variant]}`;
+
+export const getDataPWAttribute = (dataPW?: string | null) => (dataPW ? `button-${dataPW}` : 'button');
