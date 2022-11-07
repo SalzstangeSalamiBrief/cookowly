@@ -9,7 +9,7 @@ namespace Cookowly.Presentation.Controllers;
 [Route("dish")]
 public class DishController : ControllerBase
 {
-    [HttpGet("")]
+    [HttpGet]
     public async Task<IEnumerable<GetDishResponse>> Get(
         [FromServices] GetAllDishesUseCase getAllDishesUseCase,
         CancellationToken cancellationToken)
@@ -17,7 +17,7 @@ public class DishController : ControllerBase
         return await getAllDishesUseCase.Handle(cancellationToken);
     }
 
-    [HttpPost("")]
+    [HttpPost]
     public async Task<AddDishResponse> Create(
         [FromServices]AddDishUseCase addDishUseCase, 
         [FromBody]AddDishRequest request, 
