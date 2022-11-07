@@ -9,6 +9,6 @@ public static class DependencyInjection
 {
     public static void AddInfrastructer(this IServiceCollection services)
     {
-        services.AddScoped<IRepository<Dish>, DishInMemoryCache>();
+        services.AddSingleton<IRepository<Dish>, DishInMemoryCache>();
     }
 }
