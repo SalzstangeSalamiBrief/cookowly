@@ -10,7 +10,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddApplication();
-        builder.Services.AddInfrastructer();
+        builder.Services.AddInfrastructure();
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();

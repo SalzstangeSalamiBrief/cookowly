@@ -7,7 +7,7 @@ namespace Cookowly.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static void AddInfrastructer(this IServiceCollection services)
+    public static void AddInfrastructure(this IServiceCollection services)
     {
         services.AddSingleton<IRepository<Dish>, DishInMemoryCache>();
     }
