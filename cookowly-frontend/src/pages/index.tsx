@@ -71,12 +71,12 @@ function Home() {
         <Button variant="action" text="md" size="md" icon={<BeakerIcon />} />
         <Button variant="action" text="md" size="md" />
         <Button variant="action" text="sm" size="sm" icon={<BeakerIcon />} />
-        <Button variant="action" text="sm" size="sm" />
+        <Button variant="action" text="sm disabled" size="sm" isDisabled />
       </div>
       <div>
         <IconButton icon={<BeakerIcon />} ariaLabel="myLabel" />
       </div>
-      <p className="font-normal">
+      <p className="font-title font-bold">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi doloremque provident qui debitis laborum tenetur
         repudiandae inventore maxime aut. Itaque corporis odio ex harum iusto ut nobis in iste odit?
       </p>

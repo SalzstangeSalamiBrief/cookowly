@@ -37,11 +37,19 @@ test('Should mount default component', async ({ mount, page }) => {
   });
 });
 
-const styleCombinationsToTest = sizes.map((size) => variants.map((variant) => ({ size, variant })).flat()).flat();
-styleCombinationsToTest.forEach(({ size, variant }) => {
-  test(`Should mount component with styles for size '${size}' and variant '${variant}'`, async ({ mount }) => {
-    const buttonComponent = await mount(<Button text="Lorem Ipsum" size={size} variant={variant} />);
-    const classesToExpect = getButtonStyles(size, variant);
+const styleCombinationsToTest = sizes
+  .map((size) =>
+    variants.map((variant) => [true, false].map((isDisabled) => ({ size, variant, isDisabled })).flat()).flat(),
+  )
+  .flat();
+styleCombinationsToTest.forEach(({ size, variant, isDisabled }) => {
+  test(`Should mount component with styles size '${size}', variant '${variant}' isDisabled '${isDisabled}'`, async ({
+    mount,
+  }) => {
+    const buttonComponent = await mount(
+      <Button text="Lorem Ipsum" size={size} variant={variant} isDisabled={isDisabled} />,
+    );
+    const classesToExpect = getButtonStyles(size, variant, isDisabled);
     await expect(buttonComponent).toHaveClass(classesToExpect);
   });
 });

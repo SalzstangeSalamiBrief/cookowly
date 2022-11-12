@@ -32,7 +32,7 @@ export function IconButton({
   title = '',
   dataPW = null,
 }: IIconButtonProps) {
-  const styles = getButtonStyles(size, variant);
+  const styles = getButtonStyles(size, variant, isDisabled);
   const As = as;
   const clonedIcon = cloneElement(icon, { className: 'h-6 w-6' });
   const dataPWValue = getDataPWAttribute(dataPW);

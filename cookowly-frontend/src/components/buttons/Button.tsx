@@ -1,6 +1,5 @@
 import { IButtonProps } from './ButtonProps';
 import { getButtonStyles, getDataPWAttribute } from './ButtonUtilities';
-// TODO HOVER EFFECTS
 
 /**
  * This component represents an icon button.
@@ -29,7 +28,7 @@ export function Button({
   variant = 'primary',
   dataPW = null,
 }: IButtonProps) {
-  const styles = getButtonStyles(size, variant);
+  const styles = getButtonStyles(size, variant, isDisabled);
   const As = as;
   const dataPWValue = getDataPWAttribute(dataPW);
   return (
