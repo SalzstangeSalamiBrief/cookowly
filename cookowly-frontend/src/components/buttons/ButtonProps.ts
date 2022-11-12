@@ -2,12 +2,14 @@ export type Size = 'lg' | 'md' | 'sm';
 
 export type ButtonVariants = 'primary' | 'ghost' | 'action';
 
+export type ButtonTags = 'button' | 'a';
+
 interface IBaseButtonProps {
   size?: Size;
   isSubmitButton?: boolean;
   isDisabled?: boolean;
   onClick?: () => void;
-  as?: 'button' | 'a';
+  as?: ButtonTags;
   variant?: ButtonVariants;
   dataPW?: string | null;
 }
