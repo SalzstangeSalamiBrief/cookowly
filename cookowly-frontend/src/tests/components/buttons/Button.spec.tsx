@@ -46,7 +46,9 @@ styleCombinationsToTest.forEach(({ size, variant, isDisabled }) => {
   test(`Should mount component with styles size '${size}', variant '${variant}' isDisabled '${isDisabled}'`, async ({
     mount,
   }) => {
-    const buttonComponent = await mount(<Button text="Lorem Ipsum" size={size} variant={variant} />);
+    const buttonComponent = await mount(
+      <Button text="Lorem Ipsum" size={size} variant={variant} isDisabled={isDisabled} />,
+    );
     const classesToExpect = getButtonStyles(size, variant, isDisabled);
     await expect(buttonComponent).toHaveClass(classesToExpect);
   });
