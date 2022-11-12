@@ -91,7 +91,7 @@ module.exports = {
         ...warningColors,
         ...successColors,
       },
-      fontFamily: { title: 'Merriweather', content: 'Poppins' },
+      fontFamily: { title: ['Merriweather', 'serif'], content: ['Poppins', 'sans-serif'] },
       spacing: {},
     },
   },

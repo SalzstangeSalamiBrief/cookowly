@@ -4,37 +4,38 @@
 
 @font-face {
   font-family: 'Merriweather';
-  font-style: 400;
+  font-weight: 400;
   src: url('../fonts/Merriweather/Merriweather-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Merriweather';
-  font-style: 600;
+  font-weight: 700;
   src: url('../fonts/Merriweather/Merriweather-Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Poppins';
-  font-style: 400;
+  font-weight: 400;
   src: url('../fonts/Poppins/Poppins-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Poppins';
-  font-style: "italic";
+  font-style: italic;
+  font-weight: 400;
   src: url('../fonts/Poppins/Poppins-Italic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Poppins';
-  font-style: 500;
+  font-weight: 600;
   src: url('../fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Poppins';
-  font-style: 600;
+  font-weight: 700;
   src: url('../fonts/Poppins/Poppins-Bold.ttf') format('truetype');
 }
 

@@ -1,14 +1,12 @@
 import { test, expect } from '@playwright/experimental-ct-react';
 import { Button } from '../../../components/buttons/Button';
+import { ButtonTags, ButtonVariants, Size } from '../../../components/buttons/ButtonProps';
 import {
   buttonSizeStyles,
-  ButtonTags,
-  ButtonVariants,
   buttonVariantStyles,
   getButtonStyles,
   getDataPWAttribute,
-  Size,
-} from '../../../components/buttons/ButtonProps';
+} from '../../../components/buttons/ButtonUtilities';
 
 const sizes = Object.keys(buttonSizeStyles) as Size[];
 const variants = Object.keys(buttonVariantStyles) as ButtonVariants[];

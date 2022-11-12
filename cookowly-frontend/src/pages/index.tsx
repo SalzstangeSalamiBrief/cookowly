@@ -76,6 +76,10 @@ function Home() {
       <div>
         <IconButton icon={<BeakerIcon />} ariaLabel="myLabel" />
       </div>
+      <p className="font-normal">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi doloremque provident qui debitis laborum tenetur
+        repudiandae inventore maxime aut. Itaque corporis odio ex harum iusto ut nobis in iste odit?
+      </p>
     </>
   );
 }

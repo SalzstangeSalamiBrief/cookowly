@@ -1,4 +1,5 @@
-import { getButtonStyles, getDataPWAttribute, IButtonProps } from './ButtonProps';
+import { IButtonProps } from './ButtonProps';
+import { getButtonStyles, getDataPWAttribute } from './ButtonUtilities';
 // TODO HOVER EFFECTS
 
 /**

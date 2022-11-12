@@ -1,5 +1,6 @@
 import { cloneElement } from 'react';
-import { getButtonStyles, getDataPWAttribute, IIconButtonProps } from './ButtonProps';
+import { IIconButtonProps } from './ButtonProps';
+import { getButtonStyles, getDataPWAttribute } from './ButtonUtilities';
 
 /**
  * This component represents an icon button.
