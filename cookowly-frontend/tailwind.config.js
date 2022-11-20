@@ -77,6 +77,8 @@ const neutralColors = {
   'neutral-700': 'hsl(0, 0%, 32%)',
   'neutral-800': 'hsl(0, 0%, 23%)',
   'neutral-900': 'hsl(0, 0%, 13%)',
+  'neutral-50/alpha-10': 'hsl(0, 0%, 97%, 10%)',
+  'neutral-900/alpha-97': 'hsl(0, 0%, 97%, 97%)',
 };
 
 module.exports = {
