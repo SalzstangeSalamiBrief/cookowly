@@ -1,0 +1,25 @@
+name: backend ci on pr
+
+on:
+  pull_request:
+    paths:
+      - .github/pr-backend.yaml
+      - cookowly-backend/**
+
+jobs:
+  tests_e2e:
+    name: Run end-to-end tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        working-directory: cookowly-backend
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        working-directory: cookowly-backend
+        run: dotnet restore
+      - name: Build
+        working-directory: cookowly-backend
+        run: dotnet build --no-restore
