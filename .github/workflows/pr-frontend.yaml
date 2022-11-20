@@ -1,7 +1,7 @@
 name: frontend tests on pr
 
 on:
-  pull_request:
+  pull_request_review:
     paths:
       - .github/pr-frontend.yaml
       - cookowly-frontend/**
