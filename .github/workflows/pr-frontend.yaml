@@ -1,9 +1,9 @@
 name: frontend tests on pr
 
 on:
-  pull_request_review:
+  pull_request:
     paths:
-      - .github/pr-frontend.yaml
+      - .github/workflows/pr-frontend.yaml
       - cookowly-frontend/**
 
 jobs:
