@@ -2,7 +2,7 @@ export type Size = 'lg' | 'md' | 'sm';
 
 export type ButtonVariants = 'primary' | 'ghost' | 'action';
 
-export type ButtonTags = 'button' | 'a';
+export type ButtonTags = 'button' | 'a' | 'nextLink';
 
 interface IBaseButtonProps {
   size?: Size;
@@ -12,6 +12,7 @@ interface IBaseButtonProps {
   as?: ButtonTags;
   variant?: ButtonVariants;
   dataPW?: string | null;
+  href?: string;
 }
 
 export interface IIconButtonProps extends IBaseButtonProps {

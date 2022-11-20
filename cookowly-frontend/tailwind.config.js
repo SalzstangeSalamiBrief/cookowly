@@ -78,7 +78,7 @@ const neutralColors = {
   'neutral-800': 'hsl(0, 0%, 23%)',
   'neutral-900': 'hsl(0, 0%, 13%)',
   'neutral-50/alpha-10': 'hsl(0, 0%, 97%, 10%)',
-  'neutral-900/alpha-97': 'hsl(0, 0%, 97%, 97%)',
+  'neutral-900/alpha-97': 'hsl(0, 0%, 13%, 97%)',
 };
 
 module.exports = {
@@ -95,6 +95,9 @@ module.exports = {
       },
       fontFamily: { title: ['Merriweather', 'serif'], content: ['Poppins', 'sans-serif'] },
       spacing: {},
+    },
+    screen: {
+      xs: '480px',
     },
   },
   plugins: [],

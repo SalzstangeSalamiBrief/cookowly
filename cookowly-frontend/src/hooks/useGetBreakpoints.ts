@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-type ScreenSizes = 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+type ScreenSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 type Dimensions = {
   [key in `is${Capitalize<ScreenSizes>}`]: boolean;
@@ -11,6 +11,7 @@ type Breakpoints = {
 };
 
 const configuredBreakpoints: Breakpoints = {
+  Xs: 480,
   Sm: 640,
   Md: 768,
   Lg: 1024,
@@ -22,6 +23,20 @@ const screenSizes = Object.keys(configuredBreakpoints).map(
   (breakpoint) => breakpoint[0].toUpperCase() + breakpoint.slice(1),
 ) as Capitalize<ScreenSizes>[];
 
+/**
+ * Hook that tells if some breakpoint gets hit or not.
+ * This hook adds a event listener to the resize event of the dom
+ * and on each event the breakpoints will be calculated anew
+ * Supported breakpoints are:
+ *  0. xs: 480px
+ *  1. sm: 640px
+ *  2. md: 768px
+ *  3. md: 1024px
+ *  4. xl: 1280px
+ *  5. xxl: 1536px
+ *
+ * @returns
+ */
 export function useGetBreakpoints() {
   const [breakpoints, setBreakpoints] = useState<Dimensions>(
     (Object.keys(configuredBreakpoints) as ScreenSizes[]).reduce(
