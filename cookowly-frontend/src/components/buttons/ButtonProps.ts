@@ -1,0 +1,27 @@
+export type Size = 'lg' | 'md' | 'sm';
+
+export type ButtonVariants = 'primary' | 'ghost' | 'action';
+
+export type ButtonTags = 'button' | 'a';
+
+interface IBaseButtonProps {
+  size?: Size;
+  isSubmitButton?: boolean;
+  isDisabled?: boolean;
+  onClick?: () => void;
+  as?: ButtonTags;
+  variant?: ButtonVariants;
+  dataPW?: string | null;
+}
+
+export interface IIconButtonProps extends IBaseButtonProps {
+  ariaLabel: string;
+  icon: React.ReactElement;
+  title?: string;
+}
+
+export interface IButtonProps extends IBaseButtonProps {
+  text: string;
+  size?: Size;
+  icon?: React.ReactElement | null;
+}
