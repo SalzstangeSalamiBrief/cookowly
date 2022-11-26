@@ -10,19 +10,47 @@ namespace Cookowly.Presentation.Controllers;
 public class DishController : ControllerBase
 {
     [HttpGet]
-    public async Task<IEnumerable<GetDishResponse>> Get(
-        [FromServices] GetAllDishesUseCase getAllDishesUseCase,
+    public async Task<IEnumerable<GetDishResponse>> GetAll(
+        [FromServices] GetAllDishesUseCase useCase,
         CancellationToken cancellationToken)
     {
-        return await getAllDishesUseCase.Handle(cancellationToken);
+        return await useCase.Handle(cancellationToken);
+    }
+
+    [HttpGet("{id:guid}")]
+    public async Task<GetDishResponse> Get(
+        [FromServices] GetDishUseCase useCase,
+        [FromRoute] Guid id,
+        CancellationToken cancellationToken)
+    {
+        return await useCase.Handle(id, cancellationToken);
     }
 
     [HttpPost]
     public async Task<AddDishResponse> Create(
-        [FromServices]AddDishUseCase addDishUseCase, 
-        [FromBody]AddDishRequest request, 
+        [FromServices] CreateDishUseCase useCase,
+        [FromBody] AddDishRequest request,
         CancellationToken cancellationToken)
     {
-        return await addDishUseCase.Handle(request, cancellationToken);
+        return await useCase.Handle(request, cancellationToken);
+    }
+
+    [HttpPut("{id:guid}")]
+    public async Task<UpdateDishResponse> Update(
+        [FromServices] UpdateDishUseCase useCase,
+        [FromRoute] Guid id,
+        [FromBody] UpdateDishRequest request,
+        CancellationToken cancellationToken)
+    {
+        return await useCase.Handle(id, request, cancellationToken);
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task Delete(
+        [FromServices] DeleteDishUseCase useCase,
+        [FromRoute] Guid id,
+        CancellationToken cancellationToken)
+    {
+        await useCase.Handle(id, cancellationToken);
     }
 }

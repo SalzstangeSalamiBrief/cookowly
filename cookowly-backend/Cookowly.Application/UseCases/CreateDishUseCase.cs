@@ -5,11 +5,11 @@ using Cookowly.Domain.Entities;
 
 namespace Cookowly.Application.UseCases;
 
-public class AddDishUseCase : IUseCase<AddDishRequest, AddDishResponse>
+public class CreateDishUseCase : IUseCase<AddDishRequest, AddDishResponse>
 {
     private readonly IRepository<Dish> _dishRespository;
 
-    public AddDishUseCase(IRepository<Dish> dishRespository)
+    public CreateDishUseCase(IRepository<Dish> dishRespository)
     {
         _dishRespository = dishRespository;
     }
@@ -33,7 +33,9 @@ public class AddDishUseCase : IUseCase<AddDishRequest, AddDishResponse>
         {
             Id = createdDish.Id,
             Title = createdDish.Title,
-            Description = createdDish.Description
+            Description = createdDish.Description,
+            Created = createdDish.Created,
+            Modified = createdDish.Modified
         };
     }
 }
