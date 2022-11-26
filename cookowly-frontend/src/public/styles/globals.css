@@ -39,27 +39,11 @@
   src: url('../fonts/Poppins/Poppins-Bold.ttf') format('truetype');
 }
 
-html,
-body,
-body>div:first-child,
-div#__next,
-div#__next>div {
-  height: 100%;
-}
-
-.sidebar,
-.navigation {
-  width: 275px;
-}
-
-
-main {
-  width: calc(100% - 275px)
-}
-
-@media (min-width: 1280px) {
-  main {
-      width: calc(100% - 550px)
-    }
-}
-
+  html,
+  body,
+  body>div:first-child,
+  div#__next,
+  div#__next>div {
+    /* TODO LATER IN THE PROJECT CHECK IF THAT RULE INTRODUCES UNWANTED SCROLLBARS */
+    min-height: 100vh;
+  }
