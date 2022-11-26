@@ -2,11 +2,11 @@
 
 public abstract class AuditableEntity : Entity
 {
-    public string CreatedBy { get; set; } = string.Empty;
+    public required string CreatedBy { get; set; }
 
-    public DateTime Created { get; set; }
+    public required DateTime Created { get; set; }
 
-    public string ModifiedBy { get; set; } = string.Empty;
+    public required string ModifiedBy { get; set; }
 
-    public DateTime Modified { get; set; }
+    public required DateTime Modified { get; set; }
 }

@@ -2,13 +2,13 @@
 
 public class CreateDishResponse
 {
-    public Guid Id { get; set; }
+    public required Guid Id { get; set; }
 
-    public string Title { get; set; } = string.Empty;
+    public required string Title { get; set; }
 
-    public string Description { get; set; } = string.Empty;
+    public required string Description { get; set; }
 
-    public DateTime Created { get; set; }
+    public required DateTime Created { get; set; }
 
-    public DateTime Modified { get; set; }
+    public required DateTime Modified { get; set; }
 }
