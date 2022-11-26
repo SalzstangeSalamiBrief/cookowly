@@ -2,6 +2,7 @@
 using Cookowly.Application.Exceptions;
 using Cookowly.Application.Models.Response;
 using Cookowly.Domain.Entities;
+using Mapster;
 
 namespace Cookowly.Application.UseCases;
 
@@ -22,13 +23,6 @@ public class GetDishUseCase : IUseCase<Guid, GetDishResponse>
             throw new EntityNotFoundException(typeof(Dish), id);
         }
 
-        return new GetDishResponse
-        {
-            Id = dish.Id,
-            Title = dish.Title,
-            Description = dish.Description,
-            Created = dish.Created,
-            Modified = dish.Modified
-        };
+        return dish.Adapt<GetDishResponse>();
     }
 }

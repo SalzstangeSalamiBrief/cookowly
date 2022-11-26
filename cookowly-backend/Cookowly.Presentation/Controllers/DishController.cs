@@ -27,9 +27,9 @@ public class DishController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<AddDishResponse> Create(
+    public async Task<CreateDishResponse> Create(
         [FromServices] CreateDishUseCase useCase,
-        [FromBody] AddDishRequest request,
+        [FromBody] CreateDishRequest request,
         CancellationToken cancellationToken)
     {
         return await useCase.Handle(request, cancellationToken);
