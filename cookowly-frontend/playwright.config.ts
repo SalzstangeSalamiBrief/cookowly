@@ -46,12 +46,6 @@ const config: PlaywrightTestConfig = {
     { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
 
     { name: 'webkit', use: { ...devices['Desktop Safari'] } },
-
-    {
-      name: 'Components',
-      testMatch: /\*\*\/components\/\*/,
-      use: {},
-    },
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
