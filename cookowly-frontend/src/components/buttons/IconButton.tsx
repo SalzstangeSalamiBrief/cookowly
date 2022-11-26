@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { cloneElement } from 'react';
 import { IIconButtonProps } from './ButtonProps';
-import { getButtonStyles, getDataPWAttribute } from './ButtonUtilities';
+import { getButtonStyles } from './ButtonUtilities';
 
 /**
  * This component represents an icon button.
@@ -36,7 +36,7 @@ export function IconButton({
 }: IIconButtonProps) {
   const styles = getButtonStyles(size, variant, isDisabled);
   const clonedIcon = cloneElement(icon, { className: 'h-6 w-6' });
-  const dataPWValue = getDataPWAttribute(dataPW);
+  const dataPWValue = dataPW ? `icon-button-${dataPW}` : 'icon-button';
 
   if (as === 'nextLink') {
     return (

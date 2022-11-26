@@ -1,26 +1,62 @@
 import { test, expect } from '@playwright/test';
+// import { navigationLinks } from '../components/navigation/Navigation';
 import { getDataPWAttribute } from './utilities';
 
-const breakpointsWithSidebar = [1280, 1536];
-// const breakpointsWithoutSidebar = [480, 640, 768, 1024];
-// const breakpointsWithIconsInsideNavigation = [480, 640];
-// const breakpointsWithButtonsInsideNavigation = [768, 1024, 1280, 1536];
+const breakpointsShowingSidebar = [1280, 1536];
+const breakpointsHidingSidebar = [480, 640, 768, 1024];
+const breakpointsForIconButtonsInsideNavigation = [480, 640];
+const breakpointsForButtonsInsideNavigation = [768, 1024, 1280, 1536];
 
-// TIODO THIS TEST DOES DIE WITH THE MESSAGE TIMEOUT ON CONTEXT
 test.describe('Should test layout', () => {
   test.beforeEach(async ({ page }) => {
-    // TODO https://playwright.dev/docs/test-advanced
     await page.goto('/');
   });
-  // breakpointsWithSidebar.forEach((breakpoint) => {
-  test(`Should display sidebar on breakpoint '${breakpointsWithSidebar[0]}'`, async ({ page }) => {
-    await page.setViewportSize({ width: breakpointsWithSidebar[0], height: 1080 });
-    // await page.goto('http://localhost:3000');
-    const sidebarLocator = getDataPWAttribute('sidebar');
-    const sidebar = await page.locator(sidebarLocator);
-    await expect(sidebar).toBeVisible();
-    const sidebarHeader = await sidebar.locator('header');
-    await expect(sidebarHeader).toBeVisible();
-    // });
+
+  breakpointsShowingSidebar.forEach((breakpoint) => {
+    test(`Should display sidebar on breakpoint '${breakpoint}'`, async ({ page }) => {
+      await page.setViewportSize({ width: breakpoint, height: 1080 });
+      const sidebarLocator = getDataPWAttribute('sidebar');
+      const sidebar = await page.locator(sidebarLocator);
+      await expect(sidebar).toBeVisible();
+      await expect(sidebar).toHaveCount(1); // check for existence
+      const sidebarHeader = await sidebar.locator('header');
+      await expect(sidebarHeader).toBeVisible();
+      await expect(sidebarHeader).toHaveCount(1); // check for existence
+    });
   });
+
+  breakpointsHidingSidebar.forEach((breakpoint) => {
+    test(`Should not render sidebar on breakpoint '${breakpoint}'`, async ({ page }) => {
+      await page.setViewportSize({ width: breakpoint, height: 1080 });
+      const sidebarLocator = getDataPWAttribute('sidebar');
+      const sidebar = await page.locator(sidebarLocator);
+      await sidebar.isHidden();
+    });
+  });
+
+  breakpointsForButtonsInsideNavigation.forEach((breakpoint) => {
+    test(`Should render buttons in the navigation on '${breakpoint}'`, async ({ page }) => {
+      await page.setViewportSize({ width: breakpoint, height: 1080 });
+      const navigationLocator = getDataPWAttribute('navigation');
+      const anchors = await page.locator(`${navigationLocator} [data-pw^="button"]`);
+      await expect(anchors).toHaveCount(5);
+      const buttons = await page.locator(`${navigationLocator} button[data-pw^="button"]`);
+      await expect(buttons).toHaveCount(0);
+      await buttons.isHidden();
+    });
+  });
+
+  breakpointsForIconButtonsInsideNavigation.forEach((breakpoint) => {
+    test(`Should render icon buttons in the navigation on '${breakpoint}'`, async ({ page }) => {
+      await page.setViewportSize({ width: breakpoint, height: 1080 });
+      const navigationLocator = getDataPWAttribute('navigation');
+      const anchors = await page.locator(`${navigationLocator} [data-pw^="icon-button"]`);
+      await expect(anchors).toHaveCount(5);
+      const buttons = await page.locator(`${navigationLocator} button[data-pw^="icon-button"]`);
+      await expect(buttons).toHaveCount(0);
+      await buttons.isHidden();
+    });
+  });
+
+  // TODO: TESTS FÜR HEADER ARE MISSING DUE TO MISSING LOGIC IN THE COMPONENT => ADD THEM LATER
 });

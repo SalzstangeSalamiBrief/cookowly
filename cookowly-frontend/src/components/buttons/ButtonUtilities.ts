@@ -31,11 +31,3 @@ export const getButtonStyles = (size: Size, variant: ButtonVariants, isDisabled 
 
   return classes;
 };
-
-/**
- * Takes a string and returns a string for the data-pw attribute, that is used for playwright tests
- *
- * @param dataPW a nullable string
- * @returns a string for the pw-data attribute
- */
-export const getDataPWAttribute = (dataPW?: string | null) => (dataPW ? `button-${dataPW}` : 'button');

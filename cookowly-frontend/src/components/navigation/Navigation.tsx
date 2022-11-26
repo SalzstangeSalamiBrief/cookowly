@@ -12,7 +12,7 @@ import { Button } from '../buttons/Button';
 import { IconButton } from '../buttons/IconButton';
 import { INavigationLink } from './NavigationPropts';
 
-const links: INavigationLink[] = [
+export const navigationLinks: INavigationLink[] = [
   { displayName: 'All Recipes', icon: <BookOpenIcon />, path: '/recipes' },
   { displayName: 'My Recipes', icon: <StarIcon />, path: '/' },
   { displayName: 'Trending recipes', icon: <ArrowTrendingUpIcon />, path: '/' },
@@ -27,7 +27,7 @@ export function Navigation() {
     if (isMd) {
       return (
         <>
-          {links.map(({ displayName, icon, path }) => (
+          {navigationLinks.map(({ displayName, icon, path }) => (
             <li key={path} className="mb-6">
               <Button text={displayName} as="nextLink" icon={icon} variant="action" href={path} />
             </li>
@@ -41,7 +41,7 @@ export function Navigation() {
     }
     return (
       <>
-        {links.map(({ displayName, icon, path }) => (
+        {navigationLinks.map(({ displayName, icon, path }) => (
           <li key={path} className="mb-6">
             <IconButton ariaLabel={displayName} as="nextLink" icon={icon} variant="action" href={path} />
           </li>

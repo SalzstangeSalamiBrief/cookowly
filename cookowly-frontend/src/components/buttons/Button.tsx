@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { IButtonProps } from './ButtonProps';
-import { getButtonStyles, getDataPWAttribute } from './ButtonUtilities';
+import { getButtonStyles } from './ButtonUtilities';
 
 /**
  * This component represents an icon button.
@@ -31,7 +31,7 @@ export function Button({
   href = '',
 }: IButtonProps) {
   const styles = getButtonStyles(size, variant, isDisabled);
-  const dataPWValue = getDataPWAttribute(dataPW);
+  const dataPWValue = dataPW ? `button-${dataPW}` : 'button';
 
   if (as === 'nextLink') {
     return (
