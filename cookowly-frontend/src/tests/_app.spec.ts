@@ -10,8 +10,7 @@ const sidebarLocator = getDataPWAttribute('sidebar');
 const navigationLocator = getDataPWAttribute('navigation');
 
 test.describe('Should test layout', () => {
-  test.beforeEach(async ({ page, baseURL }) => {
-    console.log(baseURL);
+  test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
 
