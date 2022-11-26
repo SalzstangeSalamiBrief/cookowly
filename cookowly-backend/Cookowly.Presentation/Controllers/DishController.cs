@@ -10,11 +10,20 @@ namespace Cookowly.Presentation.Controllers;
 public class DishController : ControllerBase
 {
     [HttpGet]
-    public async Task<IEnumerable<GetDishResponse>> Get(
+    public async Task<IEnumerable<GetDishResponse>> GetAll(
         [FromServices] GetAllDishesUseCase useCase,
         CancellationToken cancellationToken)
     {
         return await useCase.Handle(cancellationToken);
+    }
+
+    [HttpGet("{id:guid}")]
+    public async Task<GetDishResponse> Get(
+        [FromServices] GetDishUseCase useCase,
+        [FromRoute] Guid id,
+        CancellationToken cancellationToken)
+    {
+        return await useCase.Handle(id, cancellationToken);
     }
 
     [HttpPost]
@@ -26,7 +35,7 @@ public class DishController : ControllerBase
         return await useCase.Handle(request, cancellationToken);
     }
 
-    [HttpPatch("{id:guid}")]
+    [HttpPut("{id:guid}")]
     public async Task<UpdateDishResponse> Update(
         [FromServices] UpdateDishUseCase useCase,
         [FromRoute] Guid id,

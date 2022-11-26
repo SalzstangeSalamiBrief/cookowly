@@ -30,8 +30,10 @@ public class UpdateDishUseCase : IUseCase<Guid, UpdateDishRequest, UpdateDishRes
         return new UpdateDishResponse
         {
             Id = dishToUpdate.Id,
-            Title = request.Title,
-            Description = request.Description,
+            Title = dishToUpdate.Title,
+            Description = dishToUpdate.Description,
+            Created = dishToUpdate.Created,
+            Modified = dishToUpdate.Modified
         };
     }
 }

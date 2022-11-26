@@ -5,9 +5,9 @@ internal interface IUseCase<TId, TRequest, TResponse>
     Task<TResponse> Handle(TId id, TRequest request, CancellationToken cancellationToken = default);
 }
 
-internal interface IUseCase<TRequest, TResponse> 
+internal interface IUseCase<TRequestOrId, TResponse> 
 {
-    Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken = default);
+    Task<TResponse> Handle(TRequestOrId requestOrId, CancellationToken cancellationToken = default);
 }
 
 internal interface IUseCase<TResponse>
