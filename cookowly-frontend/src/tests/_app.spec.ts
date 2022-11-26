@@ -6,16 +6,18 @@ const breakpointsShowingSidebar = [1280, 1536];
 const breakpointsHidingSidebar = [480, 640, 768, 1024];
 const breakpointsForIconButtonsInsideNavigation = [480, 640];
 const breakpointsForButtonsInsideNavigation = [768, 1024, 1280, 1536];
+const sidebarLocator = getDataPWAttribute('sidebar');
+const navigationLocator = getDataPWAttribute('navigation');
 
 test.describe('Should test layout', () => {
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach(async ({ page, baseURL }) => {
+    console.log(baseURL);
     await page.goto('/');
   });
 
   breakpointsShowingSidebar.forEach((breakpoint) => {
     test(`Should display sidebar on breakpoint '${breakpoint}'`, async ({ page }) => {
       await page.setViewportSize({ width: breakpoint, height: 1080 });
-      const sidebarLocator = getDataPWAttribute('sidebar');
       const sidebar = await page.locator(sidebarLocator);
       await expect(sidebar).toBeVisible();
       await expect(sidebar).toHaveCount(1); // check for existence
@@ -28,7 +30,6 @@ test.describe('Should test layout', () => {
   breakpointsHidingSidebar.forEach((breakpoint) => {
     test(`Should not render sidebar on breakpoint '${breakpoint}'`, async ({ page }) => {
       await page.setViewportSize({ width: breakpoint, height: 1080 });
-      const sidebarLocator = getDataPWAttribute('sidebar');
       const sidebar = await page.locator(sidebarLocator);
       await sidebar.isHidden();
     });
@@ -37,7 +38,6 @@ test.describe('Should test layout', () => {
   breakpointsForButtonsInsideNavigation.forEach((breakpoint) => {
     test(`Should render buttons in the navigation on '${breakpoint}'`, async ({ page }) => {
       await page.setViewportSize({ width: breakpoint, height: 1080 });
-      const navigationLocator = getDataPWAttribute('navigation');
       const anchors = await page.locator(`${navigationLocator} [data-pw^="button"]`);
       await expect(anchors).toHaveCount(5);
       const buttons = await page.locator(`${navigationLocator} button[data-pw^="button"]`);
@@ -49,7 +49,6 @@ test.describe('Should test layout', () => {
   breakpointsForIconButtonsInsideNavigation.forEach((breakpoint) => {
     test(`Should render icon buttons in the navigation on '${breakpoint}'`, async ({ page }) => {
       await page.setViewportSize({ width: breakpoint, height: 1080 });
-      const navigationLocator = getDataPWAttribute('navigation');
       const anchors = await page.locator(`${navigationLocator} [data-pw^="icon-button"]`);
       await expect(anchors).toHaveCount(5);
       const buttons = await page.locator(`${navigationLocator} button[data-pw^="icon-button"]`);

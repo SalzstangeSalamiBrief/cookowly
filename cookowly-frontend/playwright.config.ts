@@ -4,6 +4,10 @@ import * as dotenv from 'dotenv';
 // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config();
 
+const host = process.env.PW_BASE_URL;
+const port = process.env.PW_APP_PORT ? Number(process.env.PW_APP_PORT) : 3000;
+const baseURL = `${host}:${port}`;
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -34,7 +38,7 @@ const config: PlaywrightTestConfig = {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.PW_BASE_URL,
+    baseURL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
@@ -52,10 +56,11 @@ const config: PlaywrightTestConfig = {
   // outputDir: 'test-results/',
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run dev',
-  //   port: 3000,
-  // },
+  webServer: {
+    command: 'npm run dev',
+    url: baseURL,
+    reuseExistingServer: !process.env.CI,
+  },
 };
 
 export default config;

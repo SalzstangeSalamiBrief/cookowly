@@ -12,7 +12,7 @@ import { Button } from '../buttons/Button';
 import { IconButton } from '../buttons/IconButton';
 import { INavigationLink } from './NavigationPropts';
 
-export const navigationLinks: INavigationLink[] = [
+const navigationLinks: INavigationLink[] = [
   { displayName: 'All Recipes', icon: <BookOpenIcon />, path: '/recipes' },
   { displayName: 'My Recipes', icon: <StarIcon />, path: '/' },
   { displayName: 'Trending recipes', icon: <ArrowTrendingUpIcon />, path: '/' },
