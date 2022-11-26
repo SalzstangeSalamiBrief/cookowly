@@ -2,11 +2,10 @@
 using Cookowly.Application.Models.Request;
 using Cookowly.Application.Models.Response;
 using Cookowly.Domain.Entities;
-using Mapster;
 
 namespace Cookowly.Application.UseCases;
 
-public class CreateDishUseCase : IUseCase<CreateDishRequest, AddDishResponse>
+public class CreateDishUseCase : IUseCase<AddDishRequest, AddDishResponse>
 {
     private readonly IRepository<Dish> _dishRespository;
 
@@ -15,16 +14,28 @@ public class CreateDishUseCase : IUseCase<CreateDishRequest, AddDishResponse>
         _dishRespository = dishRespository;
     }
 
-    public async Task<AddDishResponse> Handle(CreateDishRequest request, CancellationToken cancellationToken = default)
+    public async Task<AddDishResponse> Handle(AddDishRequest request, CancellationToken cancellationToken = default)
     {
-        var dishToCreate = request.Adapt<Dish>();
-        dishToCreate.Id = Guid.NewGuid();
-        dishToCreate.Created = DateTime.UtcNow;
-        dishToCreate.CreatedBy = "";
-        dishToCreate.Modified = DateTime.UtcNow;
-        dishToCreate.ModifiedBy = "";
+        var dish = new Dish
+        {
+            Id = Guid.NewGuid(),
+            Title = request.Title,
+            Description = request.Description,
+            Created = DateTime.UtcNow,
+            CreatedBy = "",
+            Modified = DateTime.UtcNow,
+            ModifiedBy = ""
+        };
 
-        var createdDish = await _dishRespository.Create(dishToCreate, cancellationToken);
-        return createdDish.Adapt<AddDishResponse>();
+        var createdDish = await _dishRespository.Create(dish, cancellationToken);
+
+        return new AddDishResponse
+        {
+            Id = createdDish.Id,
+            Title = createdDish.Title,
+            Description = createdDish.Description,
+            Created = createdDish.Created,
+            Modified = createdDish.Modified
+        };
     }
 }
