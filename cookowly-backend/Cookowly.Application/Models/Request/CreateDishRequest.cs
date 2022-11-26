@@ -1,6 +1,6 @@
 ﻿namespace Cookowly.Application.Models.Request;
 
-public class AddDishRequest
+public class CreateDishRequest
 {
     public string Title { get; set; } = string.Empty;
 

@@ -6,7 +6,7 @@ using Mapster;
 
 namespace Cookowly.Application.UseCases;
 
-public class CreateDishUseCase : IUseCase<AddDishRequest, AddDishResponse>
+public class CreateDishUseCase : IUseCase<CreateDishRequest, AddDishResponse>
 {
     private readonly IRepository<Dish> _dishRespository;
 
@@ -15,7 +15,7 @@ public class CreateDishUseCase : IUseCase<AddDishRequest, AddDishResponse>
         _dishRespository = dishRespository;
     }
 
-    public async Task<AddDishResponse> Handle(AddDishRequest request, CancellationToken cancellationToken = default)
+    public async Task<AddDishResponse> Handle(CreateDishRequest request, CancellationToken cancellationToken = default)
     {
         var dishToCreate = request.Adapt<Dish>();
         dishToCreate.Id = Guid.NewGuid();
