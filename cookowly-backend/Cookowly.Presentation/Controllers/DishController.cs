@@ -26,7 +26,7 @@ public class DishController : ControllerBase
         return await useCase.Handle(request, cancellationToken);
     }
 
-    [HttpPatch("{id:guid}")]
+    [HttpPut("{id:guid}")]
     public async Task<UpdateDishResponse> Update(
         [FromServices] UpdateDishUseCase useCase,
         [FromRoute] Guid id,

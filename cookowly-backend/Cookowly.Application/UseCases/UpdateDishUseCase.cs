@@ -3,6 +3,7 @@ using Cookowly.Application.Exceptions;
 using Cookowly.Application.Models.Request;
 using Cookowly.Application.Models.Response;
 using Cookowly.Domain.Entities;
+using Mapster;
 
 namespace Cookowly.Application.UseCases;
 
@@ -26,12 +27,6 @@ public class UpdateDishUseCase : IUseCase<Guid, UpdateDishRequest, UpdateDishRes
         dishToUpdate.Title = request.Title;
         dishToUpdate.Description = request.Description;
         dishToUpdate.Modified = DateTime.UtcNow;
-
-        return new UpdateDishResponse
-        {
-            Id = dishToUpdate.Id,
-            Title = request.Title,
-            Description = request.Description,
-        };
+        return dishToUpdate.Adapt<UpdateDishResponse>();
     }
 }

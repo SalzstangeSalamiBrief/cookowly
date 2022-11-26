@@ -2,6 +2,7 @@
 using Cookowly.Application.Models.Request;
 using Cookowly.Application.Models.Response;
 using Cookowly.Domain.Entities;
+using Mapster;
 
 namespace Cookowly.Application.UseCases;
 
@@ -16,24 +17,14 @@ public class CreateDishUseCase : IUseCase<AddDishRequest, AddDishResponse>
 
     public async Task<AddDishResponse> Handle(AddDishRequest request, CancellationToken cancellationToken = default)
     {
-        var dish = new Dish
-        {
-            Id = Guid.NewGuid(),
-            Title = request.Title,
-            Description = request.Description,
-            Created = DateTime.UtcNow,
-            CreatedBy = "",
-            Modified = DateTime.UtcNow,
-            ModifiedBy = ""
-        };
+        var dishToCreate = request.Adapt<Dish>();
+        dishToCreate.Id = Guid.NewGuid();
+        dishToCreate.Created = DateTime.UtcNow;
+        dishToCreate.CreatedBy = "";
+        dishToCreate.Modified = DateTime.UtcNow;
+        dishToCreate.ModifiedBy = "";
 
-        var createdDish = await _dishRespository.Create(dish, cancellationToken);
-
-        return new AddDishResponse
-        {
-            Id = createdDish.Id,
-            Title = createdDish.Title,
-            Description = createdDish.Description
-        };
+        var createdDish = await _dishRespository.Create(dishToCreate, cancellationToken);
+        return createdDish.Adapt<AddDishResponse>();
     }
 }
