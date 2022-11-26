@@ -33,7 +33,9 @@ public class CreateDishUseCase : IUseCase<AddDishRequest, AddDishResponse>
         {
             Id = createdDish.Id,
             Title = createdDish.Title,
-            Description = createdDish.Description
+            Description = createdDish.Description,
+            Created = createdDish.Created,
+            Modified = createdDish.Modified
         };
     }
 }

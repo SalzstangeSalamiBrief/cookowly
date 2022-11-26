@@ -20,7 +20,9 @@ public class GetAllDishesUseCase : IUseCase<IEnumerable<GetDishResponse>>
         {
             Id = dish.Id,
             Title = dish.Title,
-            Description = dish.Description
+            Description = dish.Description,
+            Created = dish.Created,
+            Modified = dish.Modified
         });
     }
 }
