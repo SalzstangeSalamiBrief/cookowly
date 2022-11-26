@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app';
 import { useMemo } from 'react';
 import { Navigation } from '../components/navigation/Navigation';
 import { Sidebar } from '../components/sidebar/Sidebar';
-import { MainHeader } from '../components/mainContent/mainHeader';
+import { MainHeader } from '../components/main-header/mainHeader';
 import { useGetBreakpoints } from '../hooks/useGetBreakpoints';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className="bg-neutral-900 text-neutral-50 font-content flex">
       <Navigation />
-      <main>
+      <main data-pw="main">
         <MainHeader />
         <div className="p-4">
           <Component {...pageProps} />

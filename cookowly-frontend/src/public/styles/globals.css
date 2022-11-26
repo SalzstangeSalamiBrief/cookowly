@@ -47,3 +47,9 @@
     /* TODO LATER IN THE PROJECT CHECK IF THAT RULE INTRODUCES UNWANTED SCROLLBARS */
     min-height: 100vh;
   }
+
+
+  .sidebar,
+  .navigation{
+    max-width: 500px;
+  }
