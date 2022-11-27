@@ -22,7 +22,8 @@ export const buttonVariantStyles: { [key in ButtonVariants]: string } = {
  * @returns css classes based on the passed params
  */
 export const getButtonStyles = (size: Size, variant: ButtonVariants, isDisabled = false) => {
-  let classes = `cursor-pointer disabled:cursor-not-allowed ${buttonSizeStyles[size]} ${buttonVariantStyles[variant]}`;
+  let classes = `cursor-pointer disabled:cursor-not-allowed 
+    whitespace-pre ${buttonSizeStyles[size]} ${buttonVariantStyles[variant]}`;
 
   if (isDisabled) {
     classes = classes.replaceAll(/(hover|active):bg-([a-z]*)-(\d{2,3})/g, '');
@@ -30,11 +31,3 @@ export const getButtonStyles = (size: Size, variant: ButtonVariants, isDisabled 
 
   return classes;
 };
-
-/**
- * Takes a string and returns a string for the data-pw attribute, that is used for playwright tests
- *
- * @param dataPW a nullable string
- * @returns a string for the pw-data attribute
- */
-export const getDataPWAttribute = (dataPW?: string | null) => (dataPW ? `button-${dataPW}` : 'button');
