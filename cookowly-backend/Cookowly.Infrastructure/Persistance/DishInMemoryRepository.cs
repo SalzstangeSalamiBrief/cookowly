@@ -4,7 +4,7 @@ using Cookowly.Domain.Entities;
 
 namespace Cookowly.Infrastructure.Persistance;
 
-public class DishInMemoryCache : IRepository<Dish>
+public class DishInMemoryRepository : IRepository<Dish>
 {
     private readonly ICollection<Dish> _memoryCache = new List<Dish>();
 

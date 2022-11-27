@@ -1,6 +1,7 @@
 using Cookowly.Application;
 using Cookowly.Infrastructure;
 using Microsoft.AspNetCore.OData;
+using System.Text.Json;
 
 namespace Cookowly.Presentation;
 
@@ -17,8 +18,11 @@ public class Program
             .AddControllers()
             .AddOData(options =>
             {
-                options.Filter();
-                options.Select();
+                options.Filter().Select().OrderBy().Count().SetMaxTop(null);
+            })
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
             });
 
         builder.Services.AddEndpointsApiExplorer();
