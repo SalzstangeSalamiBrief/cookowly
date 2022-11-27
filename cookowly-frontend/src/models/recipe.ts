@@ -7,5 +7,9 @@ export interface IRecipe {
   nutrition: number;
   cookingTime: number;
   likes: number;
-  image: string;
+  imageUrl: string;
+  createdBy: string;
+  created: Date;
+  modifiedBy: string;
+  modified: Date;
 }
