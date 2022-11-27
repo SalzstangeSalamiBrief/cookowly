@@ -1,7 +1,9 @@
 using Cookowly.Application.Models.Request;
 using Cookowly.Application.Models.Response;
 using Cookowly.Application.UseCases;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 
 namespace Cookowly.Presentation.Controllers;
 
@@ -10,15 +12,16 @@ namespace Cookowly.Presentation.Controllers;
 public class DishController : ControllerBase
 {
     [HttpGet]
-    public async Task<IEnumerable<GetDishResponse>> GetAll(
-        [FromServices] GetAllDishesUseCase useCase,
-        CancellationToken cancellationToken)
+    [EnableQuery]
+    public IQueryable<GetDishResponse> Query(
+        [FromServices] QueryDishesUseCase useCase)
     {
-        return await useCase.Handle(cancellationToken);
+        return useCase.Handle();
     }
 
     [HttpGet("{id:guid}")]
-    public async Task<GetDishResponse> Get(
+    [EnableQuery]
+    public async Task<GetDishResponse> GetById(
         [FromServices] GetDishUseCase useCase,
         [FromRoute] Guid id,
         CancellationToken cancellationToken)

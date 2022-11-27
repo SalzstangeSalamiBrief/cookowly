@@ -1,5 +1,6 @@
 using Cookowly.Application;
 using Cookowly.Infrastructure;
+using Microsoft.AspNetCore.OData;
 
 namespace Cookowly.Presentation;
 
@@ -12,7 +13,14 @@ public class Program
         builder.Services.AddApplication();
         builder.Services.AddInfrastructure();
 
-        builder.Services.AddControllers();
+        builder.Services
+            .AddControllers()
+            .AddOData(options =>
+            {
+                options.Filter();
+                options.Select();
+            });
+
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 

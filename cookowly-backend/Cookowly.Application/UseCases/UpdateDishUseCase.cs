@@ -16,9 +16,9 @@ public class UpdateDishUseCase : IUseCase<Guid, UpdateDishRequest, UpdateDishRes
         _dishRepository = dishRepository;
     }
 
-    public async Task<UpdateDishResponse> Handle(Guid id, UpdateDishRequest request, CancellationToken cancellationToken = default)
+    public Task<UpdateDishResponse> Handle(Guid id, UpdateDishRequest request, CancellationToken cancellationToken = default)
     {
-        var dishToUpdate = await _dishRepository.FirstOrDefault(dish => dish.Id == id, cancellationToken);
+        var dishToUpdate = _dishRepository.Query().FirstOrDefault(dish => dish.Id == id);
         if (dishToUpdate is null)
         {
             throw new EntityNotFoundException(typeof(Dish), id);
@@ -27,6 +27,6 @@ public class UpdateDishUseCase : IUseCase<Guid, UpdateDishRequest, UpdateDishRes
         dishToUpdate.Title = request.Title;
         dishToUpdate.Description = request.Description;
         dishToUpdate.Modified = DateTime.UtcNow;
-        return dishToUpdate.Adapt<UpdateDishResponse>();
+        return Task.FromResult(dishToUpdate.Adapt<UpdateDishResponse>());
     }
 }

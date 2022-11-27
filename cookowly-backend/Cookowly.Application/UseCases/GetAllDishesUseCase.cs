@@ -5,18 +5,17 @@ using Mapster;
 
 namespace Cookowly.Application.UseCases;
 
-public class GetAllDishesUseCase : IUseCase<IEnumerable<GetDishResponse>>
+public class QueryDishesUseCase
 {
     private readonly IRepository<Dish> _dishRepository;
 
-    public GetAllDishesUseCase(IRepository<Dish> dishRepository)
+    public QueryDishesUseCase(IRepository<Dish> dishRepository)
     {
         _dishRepository = dishRepository;
     }
 
-    public async Task<IEnumerable<GetDishResponse>> Handle(CancellationToken cancellationToken = default)
+    public IQueryable<GetDishResponse> Handle()
     {
-        var dishes = await _dishRepository.Find(_ => true, cancellationToken);
-        return dishes.Adapt<IEnumerable<GetDishResponse>>();
+        return _dishRepository.Query().Select(dish => dish.Adapt<GetDishResponse>());
     }
 }

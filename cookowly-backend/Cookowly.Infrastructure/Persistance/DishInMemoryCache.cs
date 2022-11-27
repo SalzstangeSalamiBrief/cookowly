@@ -8,14 +8,9 @@ public class DishInMemoryCache : IRepository<Dish>
 {
     private readonly ICollection<Dish> _memoryCache = new List<Dish>();
 
-    public ValueTask<IEnumerable<Dish>> Find(Func<Dish, bool> predicate, CancellationToken cancellationToken = default)
+    public IQueryable<Dish> Query(CancellationToken cancellationToken = default)
     {
-        return ValueTask.FromResult(_memoryCache.Where(predicate));
-    }
-
-    public ValueTask<Dish?> FirstOrDefault(Func<Dish, bool> predicate, CancellationToken cancellationToken = default)
-    {
-        return ValueTask.FromResult(_memoryCache.FirstOrDefault(predicate));
+        return _memoryCache.AsQueryable();
     }
 
     public ValueTask<Dish> Create(Dish entity, CancellationToken cancellationToken = default)
