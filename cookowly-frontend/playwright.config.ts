@@ -1,16 +1,28 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 import dotenv from 'dotenv';
-// see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+
 dotenv.config();
 
-const host = process.env.PW_BASE_URL || 'http://localhost';
-const port = process.env.PW_APP_PORT || 3000;
+const host = process.env.PW_BASE_URL;
+const port = process.env.PW_APP_PORT;
+
+if (!host) {
+  throw new Error(
+    `Playwright cannot be executed because some configuration is missing: 
+      please provide a url in the .env file with the key 'PW_BASE_URL'`,
+  );
+}
+
+if (!host) {
+  throw new Error(
+    `Playwright cannot be executed because some configuration is missing: 
+      please provide a port in the .env file with the key 'PW_APP_PORT'`,
+  );
+}
+
 const baseURL = `${host}:${port}`;
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 const config: PlaywrightTestConfig = {
   testDir: './src/tests',
   snapshotDir: './__snapshots__',
