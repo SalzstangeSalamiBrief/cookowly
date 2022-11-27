@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className="bg-neutral-900 text-neutral-50 font-content flex">
       <Navigation />
-      <main data-pw="main">
+      <main data-pw="main" className="flex-grow">
         <MainHeader />
         <div className="p-4">
           <Component {...pageProps} />
