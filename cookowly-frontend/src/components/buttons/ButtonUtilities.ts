@@ -7,9 +7,9 @@ export const buttonSizeStyles: { [key in Size]: string } = {
 };
 
 export const buttonVariantStyles: { [key in ButtonVariants]: string } = {
-  primary: 'bg-primary-700 hover:bg-primary-800 active:bg-primary-900 text-primary-50 rounded',
-  action: 'hover:bg-neutral-800 active:bg-neutral-700 text-primary-50 rounded',
-  ghost: 'hover:bg-neutral-800 active:bg-neutral-700 text-primary-50 rounded border border-primary-50',
+  primary: 'bg-primary-700 hover:bg-primary-800 active:bg-primary-900 text-primary-50 rounded-lg',
+  action: 'hover:bg-neutral-800 active:bg-neutral-700 text-primary-50 rounded-lg',
+  ghost: 'hover:bg-neutral-800 active:bg-neutral-700 text-primary-50 rounded-lg border border-primary-50',
 };
 
 /**
