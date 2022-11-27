@@ -27,6 +27,7 @@ const screenSizes = Object.keys(configuredBreakpoints).map(
  * Hook that tells if some breakpoint gets hit or not.
  * This hook adds a event listener to the resize event of the dom
  * and on each event the breakpoints will be calculated anew
+ *
  * Supported breakpoints are:
  *  0. xs: 480px
  *  1. sm: 640px
@@ -35,7 +36,6 @@ const screenSizes = Object.keys(configuredBreakpoints).map(
  *  4. xl: 1280px
  *  5. xxl: 1536px
  *
- * @returns
  */
 export function useGetBreakpoints() {
   const [breakpoints, setBreakpoints] = useState<Dimensions>(

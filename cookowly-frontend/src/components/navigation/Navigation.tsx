@@ -23,36 +23,26 @@ export function Navigation() {
   const ariaLabelId = useId();
   const { isMd } = useGetBreakpoints();
 
-  const navigationToRender = useMemo(() => {
-    if (isMd) {
-      return (
-        <>
-          {navigationLinks.map(({ displayName, icon, path }) => (
-            <li key={path} className="mb-6">
-              <Button text={displayName} as="nextLink" icon={icon} variant="action" href={path} />
-            </li>
-          ))}
-          {/* TODO: DUMMY PROFILE BUTTON => FIX LATER AFTER USER GETS IMPLEMENTED */}
-          <li className="mt-auto">
-            <Button text="Dean Dixon" as="nextLink" href="/" variant="action" icon={<UserIcon />} />
-          </li>
-        </>
-      );
-    }
-    return (
+  const navigationToRender = useMemo(
+    () => (
       <>
         {navigationLinks.map(({ displayName, icon, path }) => (
           <li key={path} className="mb-6">
-            <IconButton ariaLabel={displayName} as="nextLink" icon={icon} variant="action" href={path} />
+            {isMd ? (
+              <Button text={displayName} as="nextLink" icon={icon} variant="action" href={path} />
+            ) : (
+              <IconButton ariaLabel={displayName} as="nextLink" icon={icon} variant="action" href={path} />
+            )}
           </li>
         ))}
         {/* TODO: DUMMY PROFILE BUTTON => FIX LATER AFTER USER GETS IMPLEMENTED */}
         <li className="mt-auto">
-          <IconButton ariaLabel="Your profile Dean Dixon" as="nextLink" href="/" variant="action" icon={<UserIcon />} />
+          <Button text="Dean Dixon" as="nextLink" href="/" variant="action" icon={<UserIcon />} />
         </li>
       </>
-    );
-  }, [isMd]);
+    ),
+    [isMd],
+  );
 
   return (
     <nav
