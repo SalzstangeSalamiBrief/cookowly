@@ -1,11 +1,11 @@
 ﻿using Cookowly.Application.Contracts;
+using Cookowly.Application.Extensions;
 using Cookowly.Application.Models.Response;
 using Cookowly.Domain.Entities;
-using Mapster;
 
 namespace Cookowly.Application.UseCases;
 
-public class QueryDishesUseCase
+public class QueryDishesUseCase : IQueryableUseCase<GetDishResponse>
 {
     private readonly IRepository<Dish> _dishRepository;
 
@@ -16,6 +16,6 @@ public class QueryDishesUseCase
 
     public IQueryable<GetDishResponse> Handle()
     {
-        return _dishRepository.Query().Select(dish => dish.Adapt<GetDishResponse>());
+        return _dishRepository.Query().AdaptAsQueryable<Dish, GetDishResponse>();
     }
 }

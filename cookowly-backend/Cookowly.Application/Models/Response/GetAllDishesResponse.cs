@@ -1,6 +1,8 @@
-﻿namespace Cookowly.Application.Models.Response;
+﻿using Cookowly.Application.Contracts;
 
-public class GetDishResponse
+namespace Cookowly.Application.Models.Response;
+
+public class GetDishResponse : IRequestOrResponse
 {
     public Guid Id { get; set; }
 

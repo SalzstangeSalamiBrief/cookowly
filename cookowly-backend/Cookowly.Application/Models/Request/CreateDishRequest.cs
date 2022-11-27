@@ -1,6 +1,8 @@
-﻿namespace Cookowly.Application.Models.Request;
+﻿using Cookowly.Application.Contracts;
 
-public class CreateDishRequest
+namespace Cookowly.Application.Models.Request;
+
+public class CreateDishRequest : IRequestOrResponse
 {
     public string Title { get; set; } = string.Empty;
 

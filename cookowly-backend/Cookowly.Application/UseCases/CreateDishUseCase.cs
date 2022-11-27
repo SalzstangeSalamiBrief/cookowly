@@ -6,7 +6,7 @@ using Mapster;
 
 namespace Cookowly.Application.UseCases;
 
-public class CreateDishUseCase : IUseCase<CreateDishRequest, CreateDishResponse>
+public class CreateDishUseCase : ICreateUseCase<CreateDishRequest, CreateDishResponse>
 {
     private readonly IRepository<Dish> _dishRespository;
 
