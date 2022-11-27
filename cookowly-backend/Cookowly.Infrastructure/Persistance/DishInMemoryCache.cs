@@ -13,6 +13,11 @@ public class DishInMemoryCache : IRepository<Dish>
         return ValueTask.FromResult(_memoryCache.Where(predicate));
     }
 
+    public ValueTask<Dish?> FirstOrDefault(Func<Dish, bool> predicate, CancellationToken cancellationToken = default)
+    {
+        return ValueTask.FromResult(_memoryCache.FirstOrDefault(predicate));
+    }
+
     public ValueTask<Dish> Create(Dish entity, CancellationToken cancellationToken = default)
     {
         _memoryCache.Add(entity);

@@ -1,6 +1,6 @@
 ﻿namespace Cookowly.Application.Models.Response;
 
-public class GetDishResponse
+public class UpdateDishResponse
 {
     public Guid Id { get; set; }
 

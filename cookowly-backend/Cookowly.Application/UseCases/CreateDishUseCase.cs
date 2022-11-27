@@ -2,19 +2,20 @@
 using Cookowly.Application.Models.Request;
 using Cookowly.Application.Models.Response;
 using Cookowly.Domain.Entities;
+using Mapster;
 
 namespace Cookowly.Application.UseCases;
 
-public class AddDishUseCase : IUseCase<AddDishRequest, AddDishResponse>
+public class CreateDishUseCase : IUseCase<CreateDishRequest, CreateDishResponse>
 {
     private readonly IRepository<Dish> _dishRespository;
 
-    public AddDishUseCase(IRepository<Dish> dishRespository)
+    public CreateDishUseCase(IRepository<Dish> dishRespository)
     {
         _dishRespository = dishRespository;
     }
 
-    public async Task<AddDishResponse> Handle(AddDishRequest request, CancellationToken cancellationToken = default)
+    public async Task<CreateDishResponse> Handle(CreateDishRequest request, CancellationToken cancellationToken = default)
     {
         var dish = new Dish
         {
@@ -28,12 +29,6 @@ public class AddDishUseCase : IUseCase<AddDishRequest, AddDishResponse>
         };
 
         var createdDish = await _dishRespository.Create(dish, cancellationToken);
-
-        return new AddDishResponse
-        {
-            Id = createdDish.Id,
-            Title = createdDish.Title,
-            Description = createdDish.Description
-        };
+        return createdDish.Adapt<CreateDishResponse>();
     }
 }
