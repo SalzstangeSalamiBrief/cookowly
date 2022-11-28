@@ -3,7 +3,7 @@
 internal interface IQueryableUseCase<TResponse>
     where TResponse : IRequestOrResponse
 {
-    Task<IQueryable<TResponse>> Handle(CancellationToken cancellationToken = default);
+    IQueryable<TResponse> Handle();
 }
 
 internal interface IGetByIdUseCase<TResponse>

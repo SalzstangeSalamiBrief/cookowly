@@ -15,14 +15,14 @@ public class GetDishUseCase : IGetByIdUseCase<GetDishResponse>
         _dishRepository = dishRepository;
     }
 
-    public Task<GetDishResponse> Handle(Guid id, CancellationToken cancellationToken = default)
+    public async Task<GetDishResponse> Handle(Guid id, CancellationToken cancellationToken = default)
     {
-        var dish = _dishRepository.Query().FirstOrDefault(dish => dish.Id == id);
+        var dish = await _dishRepository.FirstOrDefault(dish => dish.Id == id, cancellationToken);
         if (dish is null)
         {
             throw new EntityNotFoundException(typeof(Dish), id);
         }
 
-        return Task.FromResult(dish.Adapt<GetDishResponse>());
+        return dish.Adapt<GetDishResponse>();
     }
 }

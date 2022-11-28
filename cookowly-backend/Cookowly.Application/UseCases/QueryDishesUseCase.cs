@@ -7,15 +7,15 @@ namespace Cookowly.Application.UseCases;
 
 public class QueryDishesUseCase : IQueryableUseCase<GetDishResponse>
 {
-    private readonly IRepository<Dish> _dishRepository;
+    private readonly IQueryableRepository<Dish> _queryableDishRepository;
 
-    public QueryDishesUseCase(IRepository<Dish> dishRepository)
+    public QueryDishesUseCase(IQueryableRepository<Dish> queryableDishRepository)
     {
-        _dishRepository = dishRepository;
+        _queryableDishRepository = queryableDishRepository;
     }
 
     public IQueryable<GetDishResponse> Handle()
     {
-        return _dishRepository.Query().AdaptAsQueryable<Dish, GetDishResponse>();
+        return _queryableDishRepository.Query().AdaptAsQueryable<Dish, GetDishResponse>();
     }
 }
