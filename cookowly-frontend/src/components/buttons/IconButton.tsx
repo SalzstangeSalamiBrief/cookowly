@@ -1,6 +1,7 @@
+import Link from 'next/link';
 import { cloneElement } from 'react';
 import { IIconButtonProps } from './ButtonProps';
-import { getButtonStyles, getDataPWAttribute } from './ButtonUtilities';
+import { getButtonStyles } from './ButtonUtilities';
 
 /**
  * This component represents an icon button.
@@ -31,11 +32,28 @@ export function IconButton({
   variant = 'primary',
   title = '',
   dataPW = null,
+  href = '',
 }: IIconButtonProps) {
   const styles = getButtonStyles(size, variant, isDisabled);
-  const As = as;
   const clonedIcon = cloneElement(icon, { className: 'h-6 w-6' });
-  const dataPWValue = getDataPWAttribute(dataPW);
+  const dataPWValue = dataPW ? `icon-button-${dataPW}` : 'icon-button';
+
+  if (as === 'nextLink') {
+    return (
+      <Link
+        className={styles}
+        type={isSubmitButton ? 'submit' : 'button'}
+        onClick={() => (onClick ? onClick() : null)}
+        title={title || ariaLabel}
+        data-pw={dataPWValue}
+        href={href}
+      >
+        {clonedIcon}
+      </Link>
+    );
+  }
+
+  const As = as;
   const iconButton = (
     <As
       className={styles}
@@ -48,5 +66,7 @@ export function IconButton({
       {clonedIcon}
     </As>
   );
-  return cloneElement(iconButton, { 'aria-label': ariaLabel });
+  return as === 'a'
+    ? cloneElement(iconButton, { 'aria-label': ariaLabel, href })
+    : cloneElement(iconButton, { 'aria-label': ariaLabel });
 }
