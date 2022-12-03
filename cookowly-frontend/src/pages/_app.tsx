@@ -1,11 +1,11 @@
-import '../public/styles/globals.css';
 import type { AppProps } from 'next/app';
+import '../../public/styles/globals.css';
 
-import { useMemo } from 'react';
 import Head from 'next/head';
+import { useMemo } from 'react';
+import { MainHeader } from '../components/main-header/mainHeader';
 import { Navigation } from '../components/navigation/Navigation';
 import { Sidebar } from '../components/sidebar/Sidebar';
-import { MainHeader } from '../components/main-header/mainHeader';
 import { useGetBreakpoints } from '../hooks/useGetBreakpoints';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="bg-neutral-900 text-neutral-50 font-content flex">
         <Navigation />

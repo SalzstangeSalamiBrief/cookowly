@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import CookowlyIcon from '../public/brand/cookowly.svg';
+import CookowlyIcon from '../../public/brand/cookowly.svg';
 
 export function BrandIcon() {
   return (

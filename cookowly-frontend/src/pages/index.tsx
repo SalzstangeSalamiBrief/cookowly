@@ -66,9 +66,7 @@ function Home() {
          Itaque corporis odio ex harum iusto ut nobis in iste odit?`,
         ) as string[]
       ).map((content) => (
-        <p className="font-title font-bold" key={Math.ceil(Math.random() * 10000)}>
-          {content}
-        </p>
+        <p key={Math.ceil(Math.random() * 10000)}>{content}</p>
       ))}
     </>
   );
