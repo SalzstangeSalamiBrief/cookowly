@@ -2,7 +2,7 @@
 
 public class Dish : AuditableEntity
 {
-    public string Title { get; set; } = string.Empty;
+    public required string Title { get; set; }
 
-    public string Description { get; set; } = string.Empty;
+    public required string Description { get; set; }
 }
