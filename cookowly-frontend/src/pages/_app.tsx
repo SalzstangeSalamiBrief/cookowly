@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="bg-neutral-900 text-neutral-50 font-content flex">
-        <div className="h-screen mx-auto flex app-layout">
+        <div className="mx-auto flex app-layout">
           <Navigation />
           <main data-pw="main" className="flex-grow">
             <MainHeader />
