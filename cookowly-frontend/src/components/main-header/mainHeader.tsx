@@ -37,7 +37,9 @@ export function MainHeader() {
     return matchedRoute;
   };
 
+  // eslint-disable-next-line no-console
   console.log(getPartsOfCurrentRoute());
+  // eslint-disable-next-line no-console
   console.log(getCurrentRoute(appRoutes, getPartsOfCurrentRoute()));
 
   return (
