@@ -53,3 +53,7 @@
   .navigation{
     max-width: 500px;
   }
+
+  .app-layout{
+    max-width: min(100%, 1920px);
+  }
