@@ -1,10 +1,11 @@
-import '../public/styles/globals.css';
 import type { AppProps } from 'next/app';
+import '../../public/styles/globals.css';
 
+import Head from 'next/head';
 import { useMemo } from 'react';
+import { MainHeader } from '../components/main-header/mainHeader';
 import { Navigation } from '../components/navigation/Navigation';
 import { Sidebar } from '../components/sidebar/Sidebar';
-import { MainHeader } from '../components/main-header/mainHeader';
 import { useGetBreakpoints } from '../hooks/useGetBreakpoints';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -13,18 +14,23 @@ function MyApp({ Component, pageProps }: AppProps) {
   const sidebarToRender = useMemo(() => isXl && <Sidebar />, [isXl]);
 
   return (
-    <div className="bg-neutral-900 text-neutral-50 font-content ">
-      <div className="h-screen mx-auto flex app-layout">
-        <Navigation />
-        <main data-pw="main" className="flex-grow">
-          <MainHeader />
-          <div className="p-4">
-            <Component {...pageProps} />
-          </div>
-        </main>
-        {sidebarToRender}
+    <>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="bg-neutral-900 text-neutral-50 font-content flex">
+        <div className="h-screen mx-auto flex app-layout">
+          <Navigation />
+          <main data-pw="main" className="flex-grow">
+            <MainHeader />
+            <div className="p-4">
+              <Component {...pageProps} />
+            </div>
+          </main>
+          {sidebarToRender}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
