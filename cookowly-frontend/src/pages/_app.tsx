@@ -3,7 +3,7 @@ import '../../public/styles/globals.css';
 
 import Head from 'next/head';
 import { useMemo } from 'react';
-import { MainHeader } from '../components/main-header/mainHeader';
+import { MainHeader } from '../components/main-header/MainHeader';
 import { Navigation } from '../components/navigation/Navigation';
 import { Sidebar } from '../components/sidebar/Sidebar';
 import { useGetBreakpoints } from '../hooks/useGetBreakpoints';
