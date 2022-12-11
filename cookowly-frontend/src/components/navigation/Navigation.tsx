@@ -28,7 +28,7 @@ export function Navigation() {
     () => (
       <>
         {navigationLinks.map(({ displayName, icon, path }) => (
-          <li key={path} className="mb-6 flex justify-center md:justify-start md:[&>a]:w-full">
+          <li key={`${path}-${displayName}`} className="mb-6 flex justify-center md:justify-start md:[&>a]:w-full">
             {isMd ? (
               <Button text={displayName} as="nextLink" icon={icon} variant="action" href={path} />
             ) : (
