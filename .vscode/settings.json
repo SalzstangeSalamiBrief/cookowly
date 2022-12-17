@@ -1,3 +1,6 @@
 {
-  "eslint.workingDirectories": ["./cookowly-frontend"]
+  "eslint.workingDirectories": ["./cookowly-frontend"],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  }
 }
