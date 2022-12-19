@@ -1,9 +1,9 @@
-import { Size, ButtonVariants } from './ButtonProps';
+import { ButtonVariants, Size } from './ButtonProps';
 
 export const buttonSizeStyles: { [key in Size]: string } = {
-  lg: 'px-8 py-4',
-  md: 'px-4 py-2',
-  sm: 'px-2 py-1',
+  lg: 'px-8 py-4 text-lg',
+  md: 'px-4 py-2 text-base',
+  sm: 'px-2 py-1 text-sm',
 };
 
 export const buttonVariantStyles: { [key in ButtonVariants]: string } = {
