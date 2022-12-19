@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 // import { navigationLinks } from '../components/navigation/Navigation';
 import { getDataPWAttribute } from './utilities';
 
@@ -49,9 +49,9 @@ test.describe('Should test layout', () => {
     test(`Should render icon buttons in the navigation on '${breakpoint}'`, async ({ page }) => {
       await page.setViewportSize({ width: breakpoint, height: 1080 });
       const anchors = page.locator(`${navigationLocator} [data-pw^="icon-button"]`);
-      await expect(anchors).toHaveCount(4);
+      await expect(anchors).toHaveCount(5);
       const buttons = page.locator(`${navigationLocator} button[data-pw^="icon-button"]`);
-      await expect(buttons).toHaveCount(0);
+      await expect(buttons).toHaveCount(1);
       await buttons.isHidden();
     });
   });
