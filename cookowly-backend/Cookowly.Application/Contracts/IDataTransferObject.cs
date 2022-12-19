@@ -1,5 +1,5 @@
 ﻿namespace Cookowly.Application.Contracts;
 
-internal interface IRequestOrResponse
+internal interface IDataTransferObject
 {
 }

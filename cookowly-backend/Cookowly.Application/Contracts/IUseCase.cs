@@ -1,27 +1,27 @@
 ﻿namespace Cookowly.Application.Contracts;
 
 internal interface IQueryableUseCase<TResponse>
-    where TResponse : IRequestOrResponse
+    where TResponse : IDataTransferObject
 {
     IQueryable<TResponse> Handle();
 }
 
 internal interface IGetByIdUseCase<TResponse>
-    where TResponse : IRequestOrResponse
+    where TResponse : IDataTransferObject
 {
     Task<TResponse> Handle(Guid id, CancellationToken cancellationToken = default);
 }
 
 internal interface ICreateUseCase<TRequest, TResponse>
-    where TRequest : IRequestOrResponse
-    where TResponse : IRequestOrResponse
+    where TRequest : IDataTransferObject
+    where TResponse : IDataTransferObject
 {
     Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken = default);
 }
 
 internal interface IUpdateUseCase<TRequest, TResponse>
-    where TRequest : IRequestOrResponse
-    where TResponse : IRequestOrResponse
+    where TRequest : IDataTransferObject
+    where TResponse : IDataTransferObject
 {
     Task<TResponse> Handle(Guid id, TRequest request, CancellationToken cancellationToken = default);
 }

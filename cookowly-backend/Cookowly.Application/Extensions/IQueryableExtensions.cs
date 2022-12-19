@@ -8,6 +8,6 @@ internal static class IQueryableExtensions
         where TSource : class
         where TDestination : class
     {
-        return queryable.Select(entry => entry!.Adapt<TDestination>());
+        return queryable.Select(entry => entry.Adapt<TDestination>());
     }
 }
