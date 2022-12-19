@@ -58,16 +58,6 @@ function Home() {
       <div>
         <IconButton icon={<BeakerIcon />} ariaLabel="myLabel" />
       </div>
-
-      {(
-        Array.from({ length: 25 }).fill(
-          `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-         Modi doloremque provident qui debitis laborum tenetur repudiandae inventore maxime aut.
-         Itaque corporis odio ex harum iusto ut nobis in iste odit?`,
-        ) as string[]
-      ).map((content) => (
-        <p key={Math.ceil(Math.random() * 10000)}>{content}</p>
-      ))}
     </>
   );
 }
