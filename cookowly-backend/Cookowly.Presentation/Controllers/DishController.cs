@@ -11,16 +11,16 @@ namespace Cookowly.Presentation.Controllers;
 [Route("dish")]
 public class DishController : ControllerBase
 {
-    [HttpGet]
     [EnableQuery]
+    [HttpGet]
     public IQueryable<GetDishResponse> Query(
         [FromServices] QueryDishesUseCase useCase)
     {
         return useCase.Handle();
     }
 
-    [HttpGet("{id:guid}")]
     [EnableQuery]
+    [HttpGet("{id:guid}")]
     public async Task<GetDishResponse> GetById(
         [FromServices] GetDishUseCase useCase,
         [FromRoute] Guid id,

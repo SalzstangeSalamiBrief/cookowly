@@ -4,13 +4,18 @@ using Cookowly.Domain.Entities;
 
 namespace Cookowly.Infrastructure.Persistance;
 
-public class DishInMemoryRepository : IRepository<Dish>
+public class DishInMemoryRepository : IRepository<Dish>, IQueryableRepository<Dish>
 {
     private readonly ICollection<Dish> _memoryCache = new List<Dish>();
 
-    public IQueryable<Dish> Query(CancellationToken cancellationToken = default)
+    public IQueryable<Dish> Query()
     {
         return _memoryCache.AsQueryable();
+    }
+
+    public ValueTask<Dish?> FirstOrDefault(Func<Dish, bool> predicate, CancellationToken cancellationToken = default)
+    {
+        return ValueTask.FromResult(_memoryCache.FirstOrDefault(predicate));
     }
 
     public ValueTask<Dish> Create(Dish entity, CancellationToken cancellationToken = default)
