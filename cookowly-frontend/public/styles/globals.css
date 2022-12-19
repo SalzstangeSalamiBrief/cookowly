@@ -39,17 +39,41 @@
   src: url('../fonts/Poppins/Poppins-Bold.ttf') format('truetype');
 }
 
-  html,
-  body,
-  body>div:first-child,
-  div#__next,
-  div#__next>div {
-    /* TODO LATER IN THE PROJECT CHECK IF THAT RULE INTRODUCES UNWANTED SCROLLBARS */
-    min-height: 100vh;
-  }
+html,
+body,
+body>div:first-child,
+div#__next,
+div#__next>div {
+  /* TODO LATER IN THE PROJECT CHECK IF THAT RULE INTRODUCES UNWANTED SCROLLBARS */
+  min-height: 100vh;
+}
 
 
-  .sidebar,
-  .navigation{
-    max-width: 500px;
-  }
+.sidebar,
+.navigation{
+  max-width: 500px;
+}
+
+.custom-scrollbar {
+  --scrollbar-foreground: hsl(0, 0%, 49%);
+  --scrollbar-background: hsl(0, 0%, 23%);
+
+  scrollbar-color: var(--scrollbar-foreground) var(--scrollbar-background);
+}
+    
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  /* Mostly for vertical scrollbars */
+  height: 10px;
+  /* Mostly for horizontal scrollbars */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  /* Foreground */
+  background: var(--scrollbar-foreground);
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  /* Background */
+  background: var(--scrollbar-background);
+}
