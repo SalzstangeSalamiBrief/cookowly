@@ -1,4 +1,4 @@
-export type Size = 'lg' | 'md' | 'sm';
+import { Size } from '../../models/Size';
 
 export type ButtonVariants = 'primary' | 'ghost' | 'action';
 

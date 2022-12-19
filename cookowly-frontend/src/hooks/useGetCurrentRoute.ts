@@ -33,7 +33,7 @@ const getCurrentRoute = (routes: IRoute[], pathnameParts: string[]): IRoute => {
   const matchedRoute = routes.find((route) => route.pathname === firstPartOfTheRoute);
 
   if (!matchedRoute || (!matchedRoute.children && otherPartsOfTheRoute.length)) {
-    throw new Error(`There is no matching route with the part ${firstPartOfTheRoute}`);
+    return { displayName: '404 - Page not found', pathname: '*' };
   }
 
   if (matchedRoute.children?.length && otherPartsOfTheRoute.length) {
