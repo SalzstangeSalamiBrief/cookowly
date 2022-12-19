@@ -1,28 +1,10 @@
-import { Switch } from '@headlessui/react';
-import { useState } from 'react';
 import { BeakerIcon } from '@heroicons/react/24/solid';
 import { Button } from '../components/buttons/Button';
 import { IconButton } from '../components/buttons/IconButton';
 
 function Home() {
-  const [enabled, setEnabled] = useState<boolean>(false);
   return (
     <>
-      <h1 className="bg-red-400 text-blue-500" data-pw="hello-world">
-        Hello Cookwoly
-      </h1>
-      <Switch
-        checked={enabled}
-        onChange={setEnabled}
-        className={`${enabled ? 'bg-blue-600' : 'bg-gray-200'} relative inline-flex h-6 w-11 items-center rounded-full`}
-      >
-        <span className="sr-only">Enable notifications</span>
-        <span
-          className={`${
-            enabled ? 'translate-x-6' : 'translate-x-1'
-          } inline-block h-4 w-4 transform rounded-full bg-white transition`}
-        />
-      </Switch>
       <div>
         <Button text="lg" size="lg" icon={<BeakerIcon />} dataPW="my-button" />
         <Button text="lg" size="lg" />
@@ -76,10 +58,6 @@ function Home() {
       <div>
         <IconButton icon={<BeakerIcon />} ariaLabel="myLabel" />
       </div>
-      <p className="font-title font-bold">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi doloremque provident qui debitis laborum tenetur
-        repudiandae inventore maxime aut. Itaque corporis odio ex harum iusto ut nobis in iste odit?
-      </p>
     </>
   );
 }

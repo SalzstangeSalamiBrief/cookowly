@@ -4,7 +4,7 @@ namespace Cookowly.Application.Models.Request;
 
 public class UpdateDishRequest : IRequestOrResponse
 {
-    public string Title { get; set; } = string.Empty;
+    public required string Title { get; set; }
 
-    public string Description { get; set; } = string.Empty;
+    public required string Description { get; set; }
 }

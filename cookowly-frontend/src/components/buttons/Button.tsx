@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import { IButtonProps } from './ButtonProps';
-import { getButtonStyles, getDataPWAttribute } from './ButtonUtilities';
+import { getButtonStyles } from './ButtonUtilities';
 
 /**
  * This component represents an icon button.
@@ -27,10 +28,27 @@ export function Button({
   as = 'button',
   variant = 'primary',
   dataPW = null,
+  href = '',
 }: IButtonProps) {
   const styles = getButtonStyles(size, variant, isDisabled);
+  const dataPWValue = dataPW ? `button-${dataPW}` : 'button';
+
+  if (as === 'nextLink') {
+    return (
+      <Link
+        className={styles}
+        type={isSubmitButton ? 'submit' : 'button'}
+        onClick={() => (onClick ? onClick() : null)}
+        data-pw={dataPWValue}
+        href={href}
+      >
+        {icon && <span className="mr-4 h-6 w-6 inline-block align-middle">{icon}</span>}
+        {text}
+      </Link>
+    );
+  }
+
   const As = as;
-  const dataPWValue = getDataPWAttribute(dataPW);
   return (
     <As
       className={styles}
