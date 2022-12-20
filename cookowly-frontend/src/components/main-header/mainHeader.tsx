@@ -2,7 +2,7 @@ import { useGetCurrentRoute } from '../../hooks/useGetCurrentRoute';
 
 export function MainHeader() {
   const currentRoute = useGetCurrentRoute();
-  throw new Error('hello');
+
   return (
     <div
       className="p-4 border-b border-neutral-50/alpha-10 bg-neutral-900/alpha-97 font-title text-2xl sticky top-0"
