@@ -13,7 +13,7 @@ export default function Document() {
             You are searching for new Ideas? You want to create a list of recipes for the week?
             Cookowly provides you with the necessary tools."
         />
-        <meta name="keywords" content="Cookowly,Cooking,Recipes,Recipelist,Health" />
+        <meta name="keywords" content="Cookowly,Cooking,Recipes,Recipe list,Health" />
         <meta name="color-scheme" content="dark" />
         {/* src favicon  https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
