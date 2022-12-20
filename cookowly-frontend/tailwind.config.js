@@ -84,6 +84,9 @@ const neutralColors = {
 module.exports = {
   content: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    maxWidth: {
+      text: '60ch',
+    },
     extend: {
       colors: {
         ...primaryColors,
@@ -94,7 +97,6 @@ module.exports = {
         ...successColors,
       },
       fontFamily: { title: ['Merriweather', 'serif'], content: ['Poppins', 'sans-serif'] },
-      spacing: {},
     },
     screen: {
       xs: '480px',
