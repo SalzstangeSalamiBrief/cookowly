@@ -2,5 +2,6 @@
   "eslint.workingDirectories": ["./cookowly-frontend"],
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
-  }
+  },
+  "cSpell.words": ["Cookowly"]
 }
