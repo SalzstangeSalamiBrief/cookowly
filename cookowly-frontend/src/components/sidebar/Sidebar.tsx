@@ -10,7 +10,7 @@ export function Sidebar() {
       data-pw="sidebar"
     >
       <header id={ariaLabelId} className="text-center font-medium text-xl font-title whitespace-pre">
-        Trending recipes
+        Search for recipes
       </header>
     </aside>
   );

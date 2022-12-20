@@ -31,8 +31,9 @@ export class ErrorBoundary extends Component<IProps, IState> {
       return (
         <div
           className={`
-            my-4 mx-auto w-full md:w-1/2 lg:w-1/3 xl:w-1/4
-            h-max h- p-4 text-danger-50 bg-danger-900 rounded-md`}
+          error-boundary    
+          my-4 mx-auto w-full md:w-1/2 lg:w-1/3 xl:w-1/4
+          h-fit p-4 text-danger-50 bg-danger-900 rounded-md`}
         >
           <Text type="heading" as="h1" margin="my-4" size="xl" color="text-primary-50">
             Something went wrong.
