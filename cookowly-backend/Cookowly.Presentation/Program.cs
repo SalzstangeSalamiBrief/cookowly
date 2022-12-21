@@ -1,6 +1,5 @@
 using Cookowly.Application;
 using Cookowly.Infrastructure;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.OData;
 using System.Text.Json;
 
@@ -25,10 +24,6 @@ public class Program
             {
                 options.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
             });
-
-        builder.Services
-            .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie();
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();

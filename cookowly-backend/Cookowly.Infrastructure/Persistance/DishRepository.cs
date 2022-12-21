@@ -1,32 +1,38 @@
 ﻿using Cookowly.Application.Contracts;
 using Cookowly.Application.Exceptions;
 using Cookowly.Domain.Entities;
+using Cookowly.Infrastructure.Persistance.Storage;
 
 namespace Cookowly.Infrastructure.Persistance;
 
-public class DishInMemoryRepository : IRepository<Dish>, IQueryableRepository<Dish>
+internal class DishRepository : IRepository<Dish>, IQueryableRepository<Dish>
 {
-    private readonly ICollection<Dish> _memoryCache = new List<Dish>();
+    private readonly InMemoryStorage _storage;
+
+    public DishRepository(InMemoryStorage storage)
+    {
+        _storage = storage;
+    }
 
     public IQueryable<Dish> Query()
     {
-        return _memoryCache.AsQueryable();
+        return _storage.Dishes.AsQueryable();
     }
 
     public ValueTask<Dish?> FirstOrDefault(Func<Dish, bool> predicate, CancellationToken cancellationToken = default)
     {
-        return ValueTask.FromResult(_memoryCache.FirstOrDefault(predicate));
+        return ValueTask.FromResult(_storage.Dishes.FirstOrDefault(predicate));
     }
 
     public ValueTask<Dish> Create(Dish entity, CancellationToken cancellationToken = default)
     {
-        _memoryCache.Add(entity);
+        _storage.Dishes.Add(entity);
         return ValueTask.FromResult(entity);
     }
 
     public ValueTask<Dish> Update(Guid id, Dish entity, CancellationToken cancellationToken = default)
     {
-        var entityToUpdate = _memoryCache.FirstOrDefault(entry => entry.Id == id);
+        var entityToUpdate = _storage.Dishes.FirstOrDefault(entry => entry.Id == id);
         if (entityToUpdate is null)
         {
             throw new EntityNotFoundException(typeof(Entity), id);
@@ -42,13 +48,13 @@ public class DishInMemoryRepository : IRepository<Dish>, IQueryableRepository<Di
 
     public ValueTask Delete(Guid id, CancellationToken cancellationToken = default)
     {
-        var entityToRemove = _memoryCache.FirstOrDefault(entry => entry.Id == id);
+        var entityToRemove = _storage.Dishes.FirstOrDefault(entry => entry.Id == id);
         if (entityToRemove is null)
         {
             throw new EntityNotFoundException(typeof(Entity), id);
         }
 
-        _memoryCache.Remove(entityToRemove);
+        _storage.Dishes.Remove(entityToRemove);
         return ValueTask.CompletedTask;
     }
 }
