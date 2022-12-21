@@ -7,18 +7,18 @@ public sealed record GetDishResponse(
     string Title,
     string Description,
     DateTime Created,
-    DateTime Modified) : IDataTransferObject;
+    DateTime Modified);
 
 public sealed record CreateDishResponse(
     Guid Id,
     string Title,
     string Description,
     DateTime Created,
-    DateTime Modified) : IDataTransferObject;
+    DateTime Modified);
 
 public sealed record UpdateDishResponse(
     Guid Id,
     string Title,
     string Description,
     DateTime Created,
-    DateTime Modified) : IDataTransferObject;
+    DateTime Modified);

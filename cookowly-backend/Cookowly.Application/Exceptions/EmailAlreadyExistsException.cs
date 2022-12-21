@@ -1,8 +1,8 @@
 ﻿namespace Cookowly.Application.Exceptions;
 
-public class UserAlreadyExistsException : Exception
+public class EmailAlreadyExistsException : Exception
 {
-    public UserAlreadyExistsException(string email) : 
+    public EmailAlreadyExistsException(string email) : 
         base($"User with email '{email}' already exists")
     {
     }

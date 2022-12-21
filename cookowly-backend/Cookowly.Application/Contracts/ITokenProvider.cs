@@ -1,6 +1,8 @@
-﻿namespace Cookowly.Application.Contracts;
+﻿using Cookowly.Domain.Entities;
+
+namespace Cookowly.Application.Contracts;
 
 public interface ITokenProvider
 {
-    string CreateToken(string email, string password);
+    string CreateToken(User user);
 }

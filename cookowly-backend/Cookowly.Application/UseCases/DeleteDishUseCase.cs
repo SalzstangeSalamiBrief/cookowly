@@ -1,13 +1,12 @@
-﻿using Cookowly.Application.Contracts;
-using Cookowly.Domain.Entities;
+﻿using Cookowly.Application.Contracts.Repositories;
 
 namespace Cookowly.Application.UseCases;
 
-public class DeleteDishUseCase : IDeleteUseCase
+public class DeleteDishUseCase
 {
-    private readonly IRepository<Dish> _dishRespository;
+    private readonly IDishRepository _dishRespository;
 
-    public DeleteDishUseCase(IRepository<Dish> dishRespository)
+    public DeleteDishUseCase(IDishRepository dishRespository)
     {
         _dishRespository = dishRespository;
     }

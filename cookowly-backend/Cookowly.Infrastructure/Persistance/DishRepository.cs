@@ -1,11 +1,12 @@
 ﻿using Cookowly.Application.Contracts;
+using Cookowly.Application.Contracts.Repositories;
 using Cookowly.Application.Exceptions;
 using Cookowly.Domain.Entities;
 using Cookowly.Infrastructure.Persistance.Storage;
 
 namespace Cookowly.Infrastructure.Persistance;
 
-internal class DishRepository : IRepository<Dish>, IQueryableRepository<Dish>
+internal class DishRepository : IDishRepository, IQueryableRepository<Dish>
 {
     private readonly InMemoryStorage _storage;
 

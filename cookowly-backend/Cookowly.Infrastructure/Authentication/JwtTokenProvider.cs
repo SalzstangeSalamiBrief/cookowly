@@ -1,4 +1,5 @@
 ﻿using Cookowly.Application.Contracts;
+using Cookowly.Domain.Entities;
 using Cookowly.Infrastructure.Authentication.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
@@ -18,12 +19,13 @@ internal class JwtTokenProvider : ITokenProvider
         _jwtTokenOptions = jwtTokenOptions.Value;
     }
 
-    public string CreateToken(string email, string password)
+    public string CreateToken(User user)
     {
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Email, email),
-            new Claim(ClaimTypes.Role, "Administrator")
+            new Claim(JwtRegisteredClaimNames.Email, user.Email),
+            new Claim(JwtRegisteredClaimNames.Typ, "Administrator"),
+            new Claim(JwtRegisteredClaimNames.GivenName, user.GivenName)
         };
 
         var identity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
@@ -34,7 +36,7 @@ internal class JwtTokenProvider : ITokenProvider
             Issuer = _jwtTokenOptions.Issuer,
             SigningCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtTokenOptions.Key)),
-                SecurityAlgorithms.HmacSha256Signature)
+                SecurityAlgorithms.HmacSha256)
         };
 
         var tokenHandler = new JwtSecurityTokenHandler();

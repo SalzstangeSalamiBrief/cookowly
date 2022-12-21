@@ -1,11 +1,11 @@
-﻿using Cookowly.Application.Contracts;
+﻿using Cookowly.Application.Contracts.Repositories;
 using Cookowly.Application.Exceptions;
 using Cookowly.Domain.Entities;
 using Cookowly.Infrastructure.Persistance.Storage;
 
 namespace Cookowly.Infrastructure.Persistance;
 
-internal class UserRepository : IRepository<User>
+internal class UserRepository : IUserRepository
 {
     private readonly InMemoryStorage _storage;
 

@@ -12,19 +12,22 @@ public class AuthController : ControllerBase
     [AllowAnonymous]
     [HttpPost]
     [Route("signup")]
-    public async Task<SignUpResponse> SignUp(
+    public async Task SignUp(
         [FromServices] SignUpUseCase useCase,
-        [FromBody] SignUpRequest request, 
-        CancellationToken cancellation)
+        [FromBody] SignUpRequest request,
+        CancellationToken cancellationToken)
     {
-        return await useCase.Handle(request, cancellation);
+        await useCase.Handle(request, cancellationToken);
     }
 
     [AllowAnonymous]
     [HttpPost]
     [Route("signin")]
-    public string SingIn()
+    public async Task<string> SingIn(
+        [FromServices] SignInUseCase useCase,
+        [FromBody] SingInRequest request,
+        CancellationToken cancellationToken)
     {
-        return "";
+        return await useCase.Handle(request, cancellationToken);
     }
 }

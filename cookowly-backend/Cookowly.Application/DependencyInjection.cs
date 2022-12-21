@@ -13,5 +13,6 @@ public static class DependencyInjection
         services.AddScoped<DeleteDishUseCase>();
         services.AddScoped<UpdateDishUseCase>();
         services.AddScoped<SignUpUseCase>();
+        services.AddScoped<SignInUseCase>();
     }
 }

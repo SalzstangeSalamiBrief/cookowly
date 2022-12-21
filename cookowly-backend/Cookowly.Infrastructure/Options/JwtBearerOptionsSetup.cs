@@ -21,7 +21,7 @@ internal class JwtBearerOptionsSetup : IConfigureOptions<JwtBearerOptions>
         {
             ValidateIssuer = true,
             ValidateAudience = true,
-            ValidateLifetime = true,
+            ValidateLifetime = false,
             ValidateIssuerSigningKey = true,
             ValidIssuer = _jwtTokenOptions.Issuer,
             ValidAudience = _jwtTokenOptions.Audience,

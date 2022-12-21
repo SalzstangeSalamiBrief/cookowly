@@ -1,4 +1,4 @@
-﻿using Cookowly.Application.Contracts;
+﻿using Cookowly.Application.Contracts.Repositories;
 using Cookowly.Application.Exceptions;
 using Cookowly.Application.Models.Request;
 using Cookowly.Application.Models.Response;
@@ -7,11 +7,11 @@ using Mapster;
 
 namespace Cookowly.Application.UseCases;
 
-public class UpdateDishUseCase : IUpdateUseCase<UpdateDishRequest, UpdateDishResponse>
+public class UpdateDishUseCase
 {
-    private readonly IRepository<Dish> _dishRepository;
+    private readonly IDishRepository _dishRepository;
 
-    public UpdateDishUseCase(IRepository<Dish> dishRepository)
+    public UpdateDishUseCase(IDishRepository dishRepository)
     {
         _dishRepository = dishRepository;
     }
