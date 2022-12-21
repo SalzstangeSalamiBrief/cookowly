@@ -1,15 +1,16 @@
 using Cookowly.Application.Models.Request;
 using Cookowly.Application.Models.Response;
 using Cookowly.Application.UseCases;
-using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 
 namespace Cookowly.Presentation.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("dish")]
-public class DishController : ControllerBase
+public class DishController
 {
     [EnableQuery]
     [HttpGet]
