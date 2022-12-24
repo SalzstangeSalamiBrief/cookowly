@@ -20,6 +20,11 @@ const navigationLinks: INavigationLink[] = [
   { displayName: 'About', icon: <QuestionMarkCircleIcon />, path: '/about' },
 ];
 
+/**
+ * Contains the navigation of the app
+ *
+ * @returns a navigation component
+ */
 export function Navigation() {
   const ariaLabelId = useId();
   const { isMd } = useGetBreakpoints();

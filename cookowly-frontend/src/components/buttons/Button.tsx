@@ -3,19 +3,18 @@ import { IButtonProps } from './ButtonProps';
 import { getButtonStyles } from './ButtonUtilities';
 
 /**
- * This component represents an icon button.
- * Props:
- *  - text (required): the text in the button
- *  - icon (optional): an icon that can be displayed icon to display
- *  - onClick (optional): a handler for on click events
- *  - size (optional: default is md): the size of the button
- *  - variant (optional: default is primary): the variant of the icon button
- *  - isSubmitButton (optional: default is false): will be used to determine the type of the button
- *  - isDisabled (optional: default is false): is the button disabled or not
- *  - as (optional: default is button): changes the dom element to render. Can be either a button or anchor
- *  - dataPw (optional): Appended to the data-pw attribute the button will have
+ * This component represents a button.
  *
- * @param IIconButtonProps props for the icon button
+ * Default values of props:
+ *  - size: 'md',
+ *  - isSubmitButton: false,
+ *  - isDisabled: false,
+ *  - icon: null,
+ *  - as: 'button',
+ *  - variant: 'primary',
+ *  - dataPW: null, *
+ *
+ * @param IButtonProps props for the icon button
  * @returns an icon button
  */
 export function Button({
