@@ -4,7 +4,7 @@ import { getTextStyles } from './TextUtilities';
 /**
  * Renders text based on the passed props.
  *
- * Default values:
+ * Default values of props:
  *  - type: content
  *  - font weight: 400
  *  - isItalic: false

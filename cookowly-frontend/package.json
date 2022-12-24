@@ -10,7 +10,6 @@
     "playwright:test": "npx playwright test",
     "playwright:debug": "npx playwright test --debug",
     "playwright:report": "npx playwright show-report",
-    "jsonServer": "json-server --watch ./json-server-db/db.json --port 8081",
     "prepare": "cd .. && husky install"
   },
   "dependencies": {
