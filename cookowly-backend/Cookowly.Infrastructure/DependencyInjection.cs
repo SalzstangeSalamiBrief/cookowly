@@ -9,6 +9,7 @@ public static class DependencyInjection
 {
     public static void AddInfrastructure(this IServiceCollection services)
     {
-        services.AddSingleton<IRepository<Dish>, DishInMemoryCache>();
+        services.AddSingleton<IRepository<Dish>, DishInMemoryRepository>();
+        services.AddSingleton<IQueryableRepository<Dish>, DishInMemoryRepository>();
     }
 }

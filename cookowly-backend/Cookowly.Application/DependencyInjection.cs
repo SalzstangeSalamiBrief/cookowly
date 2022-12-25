@@ -7,7 +7,7 @@ public static class DependencyInjection
 {
     public static void AddApplication(this IServiceCollection services)
     {
-        services.AddScoped<GetAllDishesUseCase>();
+        services.AddScoped<QueryDishesUseCase>();
         services.AddScoped<GetDishUseCase>();
         services.AddScoped<CreateDishUseCase>();
         services.AddScoped<DeleteDishUseCase>();

@@ -7,7 +7,7 @@ using Mapster;
 
 namespace Cookowly.Application.UseCases;
 
-public class UpdateDishUseCase : IUseCase<Guid, UpdateDishRequest, UpdateDishResponse>
+public class UpdateDishUseCase : IUpdateUseCase<UpdateDishRequest, UpdateDishResponse>
 {
     private readonly IRepository<Dish> _dishRepository;
 
