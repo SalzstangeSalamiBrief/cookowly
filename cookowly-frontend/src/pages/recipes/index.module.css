@@ -1,0 +1,19 @@
+.recipe-overview-list{
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 1rem;
+    row-gap: 1rem
+}
+
+@media (min-width: 1024px) {
+    .recipe-overview-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1920px) {
+    .recipe-overview-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+

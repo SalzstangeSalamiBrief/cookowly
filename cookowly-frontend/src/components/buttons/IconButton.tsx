@@ -24,7 +24,7 @@ export function IconButton({
   size = 'md',
   isSubmitButton = false,
   isDisabled = false,
-  as = 'button',
+  asTag = 'button',
   variant = 'primary',
   title = '',
   dataPW = null,
@@ -33,12 +33,13 @@ export function IconButton({
   const styles = getButtonStyles(size, variant, isDisabled);
   const clonedIcon = cloneElement(icon, { className: 'h-6 w-6' });
   const dataPWValue = dataPW ? `icon-button-${dataPW}` : 'icon-button';
+  const type = isSubmitButton ? 'submit' : 'button';
 
-  if (as === 'nextLink') {
+  if (asTag === 'nextLink') {
     return (
       <Link
         className={styles}
-        type={isSubmitButton ? 'submit' : 'button'}
+        type={type}
         onClick={() => (onClick ? onClick() : null)}
         title={title || ariaLabel}
         data-pw={dataPWValue}
@@ -49,20 +50,20 @@ export function IconButton({
     );
   }
 
-  const As = as;
+  const AsTag = asTag;
   const iconButton = (
-    <As
+    <AsTag
       className={styles}
-      type={isSubmitButton ? 'submit' : 'button'}
+      type={type}
       disabled={isDisabled}
       onClick={() => (onClick ? onClick() : null)}
       title={title || ariaLabel}
       data-pw={dataPWValue}
     >
       {clonedIcon}
-    </As>
+    </AsTag>
   );
-  return as === 'a'
+  return asTag === 'a'
     ? cloneElement(iconButton, { 'aria-label': ariaLabel, href })
     : cloneElement(iconButton, { 'aria-label': ariaLabel });
 }

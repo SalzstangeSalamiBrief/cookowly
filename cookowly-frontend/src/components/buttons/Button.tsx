@@ -24,19 +24,20 @@ export function Button({
   isSubmitButton = false,
   isDisabled = false,
   icon = null,
-  as = 'button',
+  asTag = 'button',
   variant = 'primary',
   dataPW = null,
   href = '',
 }: IButtonProps) {
   const styles = getButtonStyles(size, variant, isDisabled);
   const dataPWValue = dataPW ? `button-${dataPW}` : 'button';
+  const type = isSubmitButton ? 'submit' : 'button';
 
-  if (as === 'nextLink') {
+  if (asTag === 'nextLink') {
     return (
       <Link
         className={styles}
-        type={isSubmitButton ? 'submit' : 'button'}
+        type={type}
         onClick={() => (onClick ? onClick() : null)}
         data-pw={dataPWValue}
         href={href}
@@ -47,17 +48,17 @@ export function Button({
     );
   }
 
-  const As = as;
+  const AsTag = asTag;
   return (
-    <As
+    <AsTag
       className={styles}
-      type={isSubmitButton ? 'submit' : 'button'}
+      type={type}
       disabled={isDisabled}
       onClick={() => (onClick ? onClick() : null)}
       data-pw={dataPWValue}
     >
       {icon && <span className="mr-4 h-6 w-6 inline-block align-middle">{icon}</span>}
       {text}
-    </As>
+    </AsTag>
   );
 }

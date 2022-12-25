@@ -24,7 +24,7 @@ interface IBaseButtonProps {
   /**
    * Renders the element as button, anchor or next link (optional)
    */
-  as?: ButtonTags;
+  asTag?: ButtonTags;
   /**
    * the style variant of the button (optional)
    */

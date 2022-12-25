@@ -8,8 +8,9 @@ const baseClass = 'max-w-text';
  * @param ITextProps
  * @returns a string of classes
  */
-export const getTextStyles = ({ margin, padding, size, color, fontWeight, isItalic, type }: ITextProps) => {
-  const fontClass = type && type === 'heading' ? 'font-title' : 'font-content';
+export const getTextStyles = ({ margin, padding, size, color, fontWeight, isItalic, type, asTag }: ITextProps) => {
+  const isTitle = (type && type === 'heading') || (asTag && asTag.includes('h'));
+  const fontClass = isTitle ? 'font-title' : 'font-content';
   const marginClass = typeof margin === 'string' ? margin : `${margin?.join(' ')}`;
   const paddingClass = typeof padding === 'string' ? padding : `${padding?.join(' ')}`;
   const sizeClass = size && size !== 'md' ? `text-${size}` : 'text-base';

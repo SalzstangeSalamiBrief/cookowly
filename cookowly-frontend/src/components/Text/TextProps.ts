@@ -67,5 +67,5 @@ export interface ITextProps {
   /**
    * (optional): renders the text as this prop. Could be either a paragraph or heading.
    */
-  as?: 'p' | `h${1 | 2 | 3 | 4 | 5 | 6}`;
+  asTag?: 'p' | `h${1 | 2 | 3 | 4 | 5 | 6}`;
 }

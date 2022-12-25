@@ -6,7 +6,7 @@ export interface IRecipeOverview {
   id: string;
   title: string;
   description: string;
-  cookingTime: string;
+  cookingTime: number;
   imageUrl: string;
   nutritionType: NutritionType;
   likes: number;
