@@ -20,6 +20,11 @@ const navigationLinks: INavigationLink[] = [
   { displayName: 'About', icon: <QuestionMarkCircleIcon />, path: '/about' },
 ];
 
+/**
+ * Contains the navigation of the app
+ *
+ * @returns a navigation component
+ */
 export function Navigation() {
   const ariaLabelId = useId();
   const { isMd } = useGetBreakpoints();
@@ -28,7 +33,7 @@ export function Navigation() {
     () => (
       <>
         {navigationLinks.map(({ displayName, icon, path }) => (
-          <li key={path} className="mb-6 flex justify-center md:justify-start md:[&>a]:w-full">
+          <li key={`${path}-${displayName}`} className="flex justify-center md:justify-start md:[&>a]:w-full">
             {isMd ? (
               <Button text={displayName} as="nextLink" icon={icon} variant="action" href={path} />
             ) : (
@@ -60,7 +65,7 @@ export function Navigation() {
           <BrandIcon />
         </Link>
       </header>
-      <ul className="flex-grow flex flex-col ">{navigationToRender}</ul>
+      <ul className="flex-grow flex flex-col gap-4">{navigationToRender}</ul>
     </nav>
   );
 }
