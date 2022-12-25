@@ -7,7 +7,6 @@ public sealed record GetDishResponse(
     string Title,
     string Description,
     DateTime Created,
-    DateTime Modified);
 
 public sealed record CreateDishResponse(
     Guid Id,

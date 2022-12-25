@@ -6,10 +6,15 @@ using Cookowly.Infrastructure.Persistance.Storage;
 
 namespace Cookowly.Infrastructure.Persistance;
 
+<<<<<<<< HEAD:cookowly-backend/Cookowly.Infrastructure/Persistance/DishRepository.cs
 internal class DishRepository : IDishRepository, IQueryableRepository<Dish>
+========
+public class DishInMemoryRepository : IRepository<Dish>, IQueryableRepository<Dish>
+>>>>>>>> main:cookowly-backend/Cookowly.Infrastructure/Persistance/DishInMemoryRepository.cs
 {
     private readonly InMemoryStorage _storage;
 
+<<<<<<<< HEAD:cookowly-backend/Cookowly.Infrastructure/Persistance/DishRepository.cs
     public DishRepository(InMemoryStorage storage)
     {
         _storage = storage;
@@ -18,6 +23,11 @@ internal class DishRepository : IDishRepository, IQueryableRepository<Dish>
     public IQueryable<Dish> Query()
     {
         return _storage.Dishes.AsQueryable();
+========
+    public IQueryable<Dish> Query()
+    {
+        return _memoryCache.AsQueryable();
+>>>>>>>> main:cookowly-backend/Cookowly.Infrastructure/Persistance/DishInMemoryRepository.cs
     }
 
     public ValueTask<Dish?> FirstOrDefault(Func<Dish, bool> predicate, CancellationToken cancellationToken = default)

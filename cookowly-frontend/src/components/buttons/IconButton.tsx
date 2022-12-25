@@ -5,19 +5,15 @@ import { getButtonStyles } from './ButtonUtilities';
 
 /**
  * This component represents an icon button.
- * Props:
- *  - icon (required): the icon to display
- *  - ariaLabel (required): the aria label to set on the button
- *  - onClick (optional): a handler for on click events
- *  - size (optional: default is md): the size of the button
- *  - variant (optional: default is primary): the variant of the icon button
- *  - isSubmitButton (optional: default is false): will be used to determine the type of the button
- *  - isDisabled (optional: default is false): is the button disabled or not
- *  - title: (optional): set the title attribute of the button.
- *      If no title is provided, then the ariaLabel will be used
- *  - as (optional: default is button): changes the dom element to render. Can be either a button or anchor
- *  - dataPw (optional): Appended to the data-pw attribute the button will have
  *
+ *  Default values of props:
+ *  - size: 'md',
+ *  - isSubmitButton: false,
+ *  - isDisabled: false,
+ *  - as: 'button',
+ *  - variant: 'primary',
+ *  - dataPW: null,
+ *  - href: empty string
  * @param IIconButtonProps props for the icon button
  * @returns an icon button
  */
