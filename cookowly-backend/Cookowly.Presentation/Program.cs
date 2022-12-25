@@ -1,5 +1,7 @@
 using Cookowly.Application;
+using Cookowly.Application.Contracts;
 using Cookowly.Infrastructure;
+using Cookowly.Presentation.Common;
 using Microsoft.AspNetCore.OData;
 using System.Text.Json;
 
@@ -13,6 +15,8 @@ public class Program
 
         builder.Services.AddApplication();
         builder.Services.AddInfrastructure(builder.Configuration);
+
+        builder.Services.AddScoped<IExecutionTimeAccessor, ExecutionTimeAccessor>();
 
         builder.Services
             .AddControllers()

@@ -41,7 +41,7 @@ internal class DishRepository : IDishRepository, IQueryableRepository<Dish>
 
         entityToUpdate.Title = entity.Title;
         entityToUpdate.Description = entity.Description;
-        entityToUpdate.ModifiedBy = entity.ModifiedBy;
+        entityToUpdate.ModifiedById = entity.ModifiedById;
         entityToUpdate.Modified = entity.Modified;
 
         return ValueTask.FromResult(entity);

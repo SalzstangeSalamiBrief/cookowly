@@ -2,11 +2,11 @@
 using Cookowly.Application.Contracts.Repositories;
 using Cookowly.Domain.Entities;
 using Cookowly.Infrastructure.Authentication;
-using Cookowly.Infrastructure.Authentication.Models;
 using Cookowly.Infrastructure.Options;
 using Cookowly.Infrastructure.Persistance;
 using Cookowly.Infrastructure.Persistance.Storage;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -18,9 +18,11 @@ public static class DependencyInjection
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddHttpContextAccessor();
+        services.AddScoped<IRequestUserAccessor>(services =>
+            RequestUserAccessor.Init(services.GetRequiredService<IHttpContextAccessor>()));
 
         services.ConfigureOptions<JwtTokenOptionsSetup>();
-        //services.ConfigureOptions<JwtBearerOptionsSetup>();
 
         services.AddSingleton<InMemoryStorage>();
         services.AddSingleton<IUserRepository, UserRepository>();

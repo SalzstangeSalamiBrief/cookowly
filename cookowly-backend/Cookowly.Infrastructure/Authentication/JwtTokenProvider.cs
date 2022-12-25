@@ -23,6 +23,7 @@ internal class JwtTokenProvider : ITokenProvider
     {
         var claims = new List<Claim>
         {
+            new Claim(JwtRegisteredClaimNames.Sid, user.Id.ToString()),
             new Claim(JwtRegisteredClaimNames.Email, user.Email),
             new Claim(JwtRegisteredClaimNames.Typ, "Administrator"),
             new Claim(JwtRegisteredClaimNames.GivenName, user.GivenName)
