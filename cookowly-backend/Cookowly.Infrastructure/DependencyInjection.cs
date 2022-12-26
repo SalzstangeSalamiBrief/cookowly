@@ -19,16 +19,18 @@ public static class DependencyInjection
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddHttpContextAccessor();
-        services.AddScoped<IRequestUserAccessor>(services =>
-            RequestUserAccessor.Init(services.GetRequiredService<IHttpContextAccessor>()));
+        services.AddScoped<IRequestUserAccessor>(serviceProvider =>
+            RequestUserAccessor.Init(serviceProvider.GetRequiredService<IHttpContextAccessor>()));
 
         services.ConfigureOptions<JwtTokenOptionsSetup>();
 
         services.AddSingleton<InMemoryStorage>();
-        services.AddSingleton<IUserRepository, UserRepository>();
-        services.AddSingleton<IDishRepository, DishRepository>();
-        services.AddSingleton<IQueryableRepository<Dish>, DishRepository>();
         services.AddSingleton<ITokenProvider, JwtTokenProvider>();
+        services.AddSingleton<IHashingService, HashingService>();
+
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IDishRepository, DishRepository>();
+        services.AddScoped<IQueryableRepository<Dish>, DishRepository>();
 
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>

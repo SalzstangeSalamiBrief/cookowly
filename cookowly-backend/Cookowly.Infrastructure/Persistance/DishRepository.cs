@@ -15,11 +15,6 @@ internal class DishRepository : IDishRepository, IQueryableRepository<Dish>
         _storage = storage;
     }
 
-    public IQueryable<Dish> Query()
-    {
-        return _storage.Dishes.AsQueryable();
-    }
-
     public ValueTask<Dish?> FirstOrDefault(Func<Dish, bool> predicate, CancellationToken cancellationToken = default)
     {
         return ValueTask.FromResult(_storage.Dishes.FirstOrDefault(predicate));
@@ -57,5 +52,10 @@ internal class DishRepository : IDishRepository, IQueryableRepository<Dish>
 
         _storage.Dishes.Remove(entityToRemove);
         return ValueTask.CompletedTask;
+    }
+
+    public IQueryable<Dish> Query()
+    {
+        return _storage.Dishes.AsQueryable();
     }
 }

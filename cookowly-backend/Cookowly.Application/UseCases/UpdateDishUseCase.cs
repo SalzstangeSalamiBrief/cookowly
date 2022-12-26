@@ -23,7 +23,8 @@ public class UpdateDishUseCase
         _requestUserAccessor = requestUserAccessor;
     }
 
-    public async Task<UpdateDishResponse> Handle(Guid id, UpdateDishRequest request, CancellationToken cancellationToken = default)
+    public async Task<UpdateDishResponse> Handle(Guid id, UpdateDishRequest request,
+        CancellationToken cancellationToken = default)
     {
         var dishToUpdate = await _dishRepository.FirstOrDefault(dish => dish.Id == id, cancellationToken);
         if (dishToUpdate is null)

@@ -1,6 +1,4 @@
-﻿using Cookowly.Application.Contracts;
-
-namespace Cookowly.Application.Models.Response;
+﻿namespace Cookowly.Application.Models.Response;
 
 public sealed record GetDishResponse(
     Guid Id,

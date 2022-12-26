@@ -6,12 +6,12 @@ namespace Cookowly.Infrastructure.Authentication;
 
 public class RequestUserAccessor : IRequestUserAccessor
 {
-    public Guid Id { get; }
-
     private RequestUserAccessor(Guid id)
     {
         Id = id;
     }
+
+    public Guid Id { get; }
 
     public static RequestUserAccessor Init(IHttpContextAccessor httpContextAccessor)
     {

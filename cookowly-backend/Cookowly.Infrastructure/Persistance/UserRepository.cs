@@ -34,7 +34,8 @@ internal class UserRepository : IUserRepository
         }
 
         entityToUpdate.Email = entity.Email;
-        entityToUpdate.Password = entity.Password;
+        entityToUpdate.PasswordHash = entity.PasswordHash;
+        entityToUpdate.PasswordSalt = entity.PasswordSalt;
 
         return ValueTask.FromResult(entity);
     }

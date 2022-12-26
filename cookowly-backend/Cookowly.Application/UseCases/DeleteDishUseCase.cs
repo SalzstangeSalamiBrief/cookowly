@@ -4,15 +4,15 @@ namespace Cookowly.Application.UseCases;
 
 public class DeleteDishUseCase
 {
-    private readonly IDishRepository _dishRespository;
+    private readonly IDishRepository _dishRepository;
 
-    public DeleteDishUseCase(IDishRepository dishRespository)
+    public DeleteDishUseCase(IDishRepository dishRepository)
     {
-        _dishRespository = dishRespository;
+        _dishRepository = dishRepository;
     }
 
     public async Task Handle(Guid id, CancellationToken cancellationToken = default)
     {
-        await _dishRespository.Delete(id, cancellationToken);
+        await _dishRepository.Delete(id, cancellationToken);
     }
 }
