@@ -48,15 +48,23 @@ div#__next>div {
   min-height: 100vh;
 }
 
-.sidebar,
-.navigation {
-  max-width: 500px;
+.app-layout {
+  --side-content: 300px;
+  --max-width: min(100%, 1920px);
+
+  width: 100%;
+  max-width: var(--max-width);
+
+  display: grid;
+  grid-template-columns: var(--side-content) calc(var(--max-width) - var(--side-content));
 }
 
-.app-layout {
-  width: 100%;
-  max-width: min(100%, 1920px);
+@media (min-width: 1280px) {
+  .app-layout {
+    grid-template-columns: var(--side-content) calc(var(--max-width) - 2 * var(--side-content)) var(--side-content);
+  }
 }
+
 
 .custom-scrollbar {
   --scrollbar-foreground: hsl(0, 0%, 49%);

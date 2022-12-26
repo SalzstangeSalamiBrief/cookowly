@@ -7,7 +7,9 @@ import styles from './index.module.css';
 const recipes: IRecipeOverview[] = [
   {
     cookingTime: 23,
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia imp',
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia imp
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia imp
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia imp`,
     id: 'a',
     imageUrl: `https://images.unsplash.com/photo-1567529854338-fc097b962123?ixlib=rb-4.0.3
         &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,

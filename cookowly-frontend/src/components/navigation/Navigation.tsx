@@ -55,8 +55,7 @@ export function Navigation() {
 
   return (
     <nav
-      className="navigation p-2 md:p-4 border-r border-neutral-50/alpha-10
-        sticky top-0 max-h-screen flex flex-col items-center "
+      className="p-2 md:p-4 border-r border-neutral-50/alpha-10 sticky top-0 max-h-screen flex flex-col items-center "
       aria-labelledby={ariaLabelId}
       data-pw="navigation"
     >

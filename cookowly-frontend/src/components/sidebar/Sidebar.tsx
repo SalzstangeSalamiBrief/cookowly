@@ -5,7 +5,7 @@ export function Sidebar() {
 
   return (
     <aside
-      className="sidebar p-4 border-l border-neutral-50/alpha-10 sticky top-0 max-h-screen"
+      className="p-4 border-l border-neutral-50/alpha-10 sticky top-0 max-h-screen"
       aria-labelledby={ariaLabelId}
       data-pw="sidebar"
     >

@@ -31,5 +31,5 @@ export const getTextStyles = ({ margin, padding, size, color, fontWeight, isItal
   }
 
   return `${baseClass} ${fontClass} ${marginClass} ${paddingClass}
-    ${sizeClass} ${colorClass} ${fontWeightClass} ${italicClass}`;
+    ${sizeClass} ${colorClass} ${fontWeightClass} ${italicClass} max-w-text`;
 };
