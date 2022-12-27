@@ -2,9 +2,9 @@ import { ReactElement } from 'react';
 
 export interface ICardProps {
   /**
-   * The title of the card
+   * The title content of the card
    */
-  title: string;
+  title: string | ReactElement;
   /**
    * The main content of the card
    */

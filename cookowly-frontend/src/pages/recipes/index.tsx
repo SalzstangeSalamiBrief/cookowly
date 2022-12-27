@@ -17,6 +17,7 @@ const recipes: RecipeOverview[] = [
     likes: 300,
     nutritionType: NutritionType.CARNIVORE,
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
+    nutrition: 200,
   },
   {
     cookingTime: 23,
@@ -27,6 +28,7 @@ const recipes: RecipeOverview[] = [
     likes: 300,
     nutritionType: NutritionType.VEGETARIAN,
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
+    nutrition: 200,
   },
   {
     cookingTime: 23,
@@ -37,6 +39,7 @@ const recipes: RecipeOverview[] = [
     likes: 300,
     nutritionType: NutritionType.VEGAN,
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
+    nutrition: 200,
   },
   {
     cookingTime: 23,
@@ -47,6 +50,7 @@ const recipes: RecipeOverview[] = [
     likes: 300,
     nutritionType: NutritionType.CARNIVORE,
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
+    nutrition: 200,
   },
   {
     cookingTime: 23,
@@ -57,6 +61,7 @@ const recipes: RecipeOverview[] = [
     likes: 300,
     nutritionType: NutritionType.VEGETARIAN,
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
+    nutrition: 200,
   },
   {
     cookingTime: 23,
@@ -67,6 +72,7 @@ const recipes: RecipeOverview[] = [
     likes: 300,
     nutritionType: NutritionType.VEGAN,
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
+    nutrition: 200,
   },
   {
     cookingTime: 23,
@@ -77,6 +83,7 @@ const recipes: RecipeOverview[] = [
     likes: 300,
     nutritionType: NutritionType.CARNIVORE,
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
+    nutrition: 200,
   },
   {
     cookingTime: 23,
@@ -87,6 +94,7 @@ const recipes: RecipeOverview[] = [
     likes: 300,
     nutritionType: NutritionType.VEGETARIAN,
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
+    nutrition: 200,
   },
   {
     cookingTime: 23,
@@ -97,6 +105,7 @@ const recipes: RecipeOverview[] = [
     likes: 300,
     nutritionType: NutritionType.VEGAN,
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
+    nutrition: 200,
   },
 ];
 

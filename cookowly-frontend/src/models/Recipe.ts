@@ -8,6 +8,7 @@ export interface IRecipe {
   description: string;
   cookingTime: number;
   imageUrl: string;
+  nutrition: number;
   nutritionType: NutritionType;
   likes: number;
   tags: string[];
