@@ -47,7 +47,7 @@ export function RecipeOverviewCard({
   );
 
   const cardFooter = (
-    <dl className="flex gap-4 flex-wrap text-neutral-200">
+    <dl className="flex justify-center gap-4 flex-wrap text-neutral-200">
       <dt className="flex align-middle" aria-label={`cooking time: ${cookingTime}`}>
         <ClockIcon className="mr-2 w-6 h-6" /> {cookingTime} min
       </dt>
