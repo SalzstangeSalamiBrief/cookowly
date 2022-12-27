@@ -1,6 +1,7 @@
 import { RefObject, useEffect, useState } from 'react';
 import { NutritionType } from '../models/enums/NutritionType';
 import { RecipeOverview } from '../models/Recipe';
+import { useInfiniteScroll } from './useInfiniteScroll';
 
 const recipes: RecipeOverview[] = Array.from({ length: 200 })
   .fill(undefined)
@@ -25,6 +26,14 @@ export const useFetchRecipeOverviews = (targetElementRef: RefObject<HTMLDivEleme
     recipes.slice(currentIndex * 10, (currentIndex + 1) * 10),
   );
 
+  // TODO FETCH ACTUAL DATA
+
+  const handleInfiniteScroll = () => {
+    if (!isLoading) {
+      setCurrentIndex((p) => p + 1);
+    }
+  };
+
   useEffect(() => {
     if (isLoading) {
       return;
@@ -37,27 +46,10 @@ export const useFetchRecipeOverviews = (targetElementRef: RefObject<HTMLDivEleme
         ...recipes.slice(currentIndex * numberOfRecipesPerPage, (currentIndex + 1) * numberOfRecipesPerPage),
       ]);
       setIsLoading(false);
-    }, 750);
-  }, [currentIndex, isLoading]);
+    }, 2000);
+  }, [currentIndex]);
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '20px',
-      threshold: 0,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      const target = entries[0];
-      if (target?.isIntersecting) {
-        setCurrentIndex((p) => p + 1);
-      }
-    }, options);
-
-    if (targetElementRef.current) {
-      observer.observe(targetElementRef.current);
-    }
-  }, [targetElementRef]);
+  useInfiniteScroll(targetElementRef, handleInfiniteScroll);
 
   return currentRecipes;
 };
