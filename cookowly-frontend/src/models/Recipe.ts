@@ -2,7 +2,7 @@ import { NutritionType } from './enums/NutritionType';
 import { RecipeScope } from './enums/RecipeScope';
 import { IIngredient } from './Ingredient';
 
-export interface IRecipeOverview {
+export interface IRecipe {
   id: string;
   title: string;
   description: string;
@@ -11,9 +11,6 @@ export interface IRecipeOverview {
   nutritionType: NutritionType;
   likes: number;
   tags: string[];
-}
-
-export interface IDetailedRecipe extends IRecipeOverview {
   author: string;
   scope: RecipeScope;
   preparationSteps: string[];
@@ -21,3 +18,8 @@ export interface IDetailedRecipe extends IRecipeOverview {
   createdBy: string;
   createdOn: string;
 }
+
+export type RecipeOverview = Omit<
+  IRecipe,
+  'author' | 'tags' | 'scope' | 'preparationSteps' | 'ingredients' | 'createdBy' | 'createdOn'
+>;

@@ -1,10 +1,11 @@
+import Head from 'next/head';
 import { RecipeOverviewCard } from '../../components/card/wrapper/RecipeOverviewCard';
 import { NutritionType } from '../../models/enums/NutritionType';
-import { IRecipeOverview } from '../../models/Recipe';
+import { RecipeOverview } from '../../models/Recipe';
 
 import styles from './index.module.css';
 
-const recipes: IRecipeOverview[] = [
+const recipes: RecipeOverview[] = [
   {
     cookingTime: 23,
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia imp
@@ -15,7 +16,6 @@ const recipes: IRecipeOverview[] = [
         &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,
     likes: 300,
     nutritionType: NutritionType.CARNIVORE,
-    tags: [],
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
   },
   {
@@ -26,7 +26,6 @@ const recipes: IRecipeOverview[] = [
         &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,
     likes: 300,
     nutritionType: NutritionType.VEGETARIAN,
-    tags: [],
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
   },
   {
@@ -37,7 +36,6 @@ const recipes: IRecipeOverview[] = [
         &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,
     likes: 300,
     nutritionType: NutritionType.VEGAN,
-    tags: [],
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
   },
   {
@@ -48,7 +46,6 @@ const recipes: IRecipeOverview[] = [
         &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,
     likes: 300,
     nutritionType: NutritionType.CARNIVORE,
-    tags: [],
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
   },
   {
@@ -59,7 +56,6 @@ const recipes: IRecipeOverview[] = [
         &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,
     likes: 300,
     nutritionType: NutritionType.VEGETARIAN,
-    tags: [],
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
   },
   {
@@ -70,7 +66,6 @@ const recipes: IRecipeOverview[] = [
         &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,
     likes: 300,
     nutritionType: NutritionType.VEGAN,
-    tags: [],
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
   },
   {
@@ -81,7 +76,6 @@ const recipes: IRecipeOverview[] = [
         &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,
     likes: 300,
     nutritionType: NutritionType.CARNIVORE,
-    tags: [],
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
   },
   {
@@ -92,7 +86,6 @@ const recipes: IRecipeOverview[] = [
         &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,
     likes: 300,
     nutritionType: NutritionType.VEGETARIAN,
-    tags: [],
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
   },
   {
@@ -103,19 +96,23 @@ const recipes: IRecipeOverview[] = [
         &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,
     likes: 300,
     nutritionType: NutritionType.VEGAN,
-    tags: [],
     title: 'Creamy Coconut Rice with Spiced Chickpeas',
   },
 ];
 
 export default function Recipes() {
   return (
-    <ul className={styles['recipe-overview-list']}>
-      {recipes.map((recipe) => (
-        <li>
-          <RecipeOverviewCard key={recipe.id} recipe={recipe} />
-        </li>
-      ))}
-    </ul>
+    <>
+      <Head>
+        <title>Recipes</title>
+      </Head>
+      <ul className={styles['recipe-overview-list']}>
+        {recipes.map((recipe) => (
+          <li className="[&>article]:h-full">
+            <RecipeOverviewCard key={recipe.id} recipe={recipe} />
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }

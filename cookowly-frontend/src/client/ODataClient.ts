@@ -1,4 +1,4 @@
-import { IClientOptions, SortDirection } from './ODataClientModels';
+import { IClientOptions, ODataFields, SortDirection } from './ODataClientModels';
 
 const baseApiUrl = process.env.NEXT_API_URL;
 
@@ -37,6 +37,9 @@ const getQuery = <T>(options: IClientOptions<T>): string => {
   return queries.join('&');
 };
 
+const responseContainsFields = <T>(response: unknown, fields: ODataFields<T>): response is T =>
+  fields.reduce((previous, field) => (response as any)[field] !== undefined && previous, true);
+
 const getData = <T>(baseUrl: string) => {
   const requestConfig: RequestInit = {
     method: 'GET',
@@ -47,8 +50,13 @@ const getData = <T>(baseUrl: string) => {
       const query = getQuery<T>(options);
       const url = `${baseUrl}?${query}`;
       const response = await fetch(url, requestConfig);
-      const data = response.json() as T;
-      return data;
+      const data: unknown = response.json();
+
+      if (options?.fields?.length && !responseContainsFields<T>(response, options.fields)) {
+        throw new Error(`The response does not contain all requested fields: '${options.fields.join(', ')}'`);
+      }
+
+      return data as T;
     } catch (error) {
       console.error(error);
       // TODO: DO SOMETHING TO DISPLAY ERRORS

@@ -49,19 +49,26 @@ div#__next>div {
 }
 
 .app-layout {
-  --side-content: 300px;
+  --side-content-width: 75px;
   --max-width: min(100%, 1920px);
 
   width: 100%;
   max-width: var(--max-width);
 
   display: grid;
-  grid-template-columns: var(--side-content) calc(var(--max-width) - var(--side-content));
+  grid-template-columns: var(--side-content-width) calc(var(--max-width) - var(--side-content-width));
+}
+
+@media (min-width: 768px) {
+  .app-layout {
+    --side-content-width: 250px;
+  }
 }
 
 @media (min-width: 1280px) {
   .app-layout {
-    grid-template-columns: var(--side-content) calc(var(--max-width) - 2 * var(--side-content)) var(--side-content);
+    --side-content-width: 300px;
+    grid-template-columns: var(--side-content-width) calc(var(--max-width) - 2 * var(--side-content-width)) var(--side-content-width);
   }
 }
 

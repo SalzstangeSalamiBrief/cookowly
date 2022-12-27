@@ -41,7 +41,7 @@ export function Navigation() {
             )}
           </li>
         ))}
-        <li className="mt-auto">
+        <li className="mt-auto md:[&>a]:w-full">
           {isMd ? (
             <Button text="Dean Dixon" asTag="nextLink" href="/" variant="action" icon={<UserIcon />} />
           ) : (
