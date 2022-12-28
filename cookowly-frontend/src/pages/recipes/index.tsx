@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useRef } from 'react';
 import { RecipeOverviewCard } from '../../components/card/wrapper/RecipeOverviewCard';
+import { LoadingSpinner } from '../../components/loading-spinner/LoadingSpinner';
 import { useFetchRecipeOverviews } from '../../hooks/useFetchRecipeOverviews';
 
 import styles from './index.module.css';
@@ -15,7 +16,7 @@ import styles from './index.module.css';
 
 export default function Recipes() {
   const infiniteScrollTriggerElement = useRef<HTMLLIElement>(null);
-  const { recipes } = useFetchRecipeOverviews(infiniteScrollTriggerElement);
+  const { recipes, isLoading } = useFetchRecipeOverviews(infiniteScrollTriggerElement);
 
   const scrollThreshold = Math.floor(recipes.length * (2 / 3));
 
@@ -38,6 +39,7 @@ export default function Recipes() {
           );
         })}
       </ul>
+      {isLoading && <LoadingSpinner text="Loading more recipes..." />}
     </>
   );
 }

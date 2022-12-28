@@ -6,7 +6,7 @@ import { RecipeOverview } from '../../../models/Recipe';
 import { Text } from '../../Text/Text';
 import { Card } from '../Card';
 
-import styles from '../card.module.css';
+import styles from '../Card.module.css';
 
 const getNutritionTypeString = (nutritionType: NutritionType) => {
   switch (nutritionType) {
