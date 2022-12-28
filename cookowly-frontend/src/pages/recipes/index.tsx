@@ -37,7 +37,7 @@ export default function Recipes() {
           );
         })}
       </ul>
-      {isLoading && <LoadingSpinner text="Loading more recipes..." />}
+      {isLoading && <LoadingSpinner text="One moment please. More recipes getting loaded..." />}
     </>
   );
 }
