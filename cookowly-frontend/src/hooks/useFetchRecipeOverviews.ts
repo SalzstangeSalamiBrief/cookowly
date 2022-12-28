@@ -2,6 +2,16 @@ import { RefObject, useEffect, useState } from 'react';
 import { NutritionType } from '../models/enums/NutritionType';
 import { RecipeOverview } from '../models/Recipe';
 import { useInfiniteScroll } from './useInfiniteScroll';
+
+const dummyImages = [
+  `https://images.unsplash.com/photo-1567529854338-fc097b962123?ixlib=rb-4.0.3
+        &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,
+  `https://images.unsplash.com/photo-1668665771757-4d42737d295a?ixlib=rb-4.0.3
+  &ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Q2hpcG90bGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60`,
+  `https://images.unsplash.com/photo-1625940629601-8f2570086b06?ixlib=rb-4.0.3
+  &ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8a2FyYWFnZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60`,
+];
+
 // TODO REMOVE LATER AFTER FETCHING ACTUAL DATA
 const dummyRecipes: RecipeOverview[] = Array.from({ length: 200 })
   .fill(undefined)
@@ -9,8 +19,7 @@ const dummyRecipes: RecipeOverview[] = Array.from({ length: 200 })
     cookingTime: 23,
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia imp',
     id: index.toString(),
-    imageUrl: `https://images.unsplash.com/photo-1567529854338-fc097b962123?ixlib=rb-4.0.3
-        &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,
+    imageUrl: dummyImages[Math.floor(Math.random() * dummyImages.length)],
     likes: 300,
     nutritionType: NutritionType.VEGETARIAN,
     title: 'Creamy Coconut Rice with Spiced Chickpeas',

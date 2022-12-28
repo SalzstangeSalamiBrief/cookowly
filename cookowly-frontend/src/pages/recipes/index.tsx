@@ -9,8 +9,8 @@ import styles from './index.module.css';
  *  1. TEST MULTIPLE IMAGES
  *  2. Loading state
  *  3. Error State
- *  4. Load more data after scrolling
  *  5. Get data from Backend
+ *  6. Comments
  */
 
 export default function Recipes() {
