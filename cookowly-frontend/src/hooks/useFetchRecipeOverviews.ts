@@ -10,6 +10,8 @@ const dummyImages = [
   &ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Q2hpcG90bGV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60`,
   `https://images.unsplash.com/photo-1625940629601-8f2570086b06?ixlib=rb-4.0.3
   &ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8a2FyYWFnZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60`,
+  `https://images.unsplash.com/photo-1657299156638-ffa9dac845b4?ixlib=rb-4.0.3
+  &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80`,
 ];
 
 // TODO REMOVE LATER AFTER FETCHING ACTUAL DATA
@@ -17,7 +19,12 @@ const dummyRecipes: RecipeOverview[] = Array.from({ length: 200 })
   .fill(undefined)
   .map((_, index) => ({
     cookingTime: 23,
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia imp',
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia imp
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia im
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia im
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia im
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia im
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolor architecto mollitia im`,
     id: index.toString(),
     imageUrl: dummyImages[Math.floor(Math.random() * dummyImages.length)],
     likes: 300,

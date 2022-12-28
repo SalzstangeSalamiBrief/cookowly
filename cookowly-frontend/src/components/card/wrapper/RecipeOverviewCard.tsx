@@ -16,7 +16,6 @@ const getNutritionTypeString = (nutritionType: NutritionType) => {
       return 'vegan';
     case NutritionType.VEGETARIAN:
       return 'vegetarian';
-
     default:
       throw new Error(`The nutrition type '${nutritionType}' is not supported`);
   }
@@ -34,15 +33,13 @@ export function RecipeOverviewCard({
   );
 
   const cardBody = (
-    <div className="flex gap-4">
-      <div className="relative w-1/3 h-32">
-        <Image src={imageUrl} alt={`image of the recipe ${title}`} fill />
+    <div className="flex flex-col gap-4">
+      <div className="relative w-full h-56 ">
+        <Image src={imageUrl} alt={`image of the recipe ${title}`} fill className="object-contain" />
       </div>
-      <div className="flex w-2/3">
-        <Text color="text-neutral-200">
-          <span className={`block overflow-hidden text-ellipsis ${styles['clamped-description']}`}>{description}</span>
-        </Text>
-      </div>
+      <Text color="text-neutral-200">
+        <span className={`block overflow-hidden text-ellipsis ${styles['clamped-description']}`}>{description}</span>
+      </Text>
     </div>
   );
 

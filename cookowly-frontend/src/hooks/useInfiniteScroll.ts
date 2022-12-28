@@ -10,7 +10,6 @@ export const useInfiniteScroll = (targetElementRef: RefObject<HTMLElement>, call
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const target = entries[0];
-      console.log('INSCROLL', target?.isIntersecting);
       if (target?.isIntersecting) {
         callback();
       }
