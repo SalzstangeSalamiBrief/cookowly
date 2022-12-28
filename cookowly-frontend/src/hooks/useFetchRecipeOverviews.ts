@@ -2,8 +2,8 @@ import { RefObject, useEffect, useState } from 'react';
 import { NutritionType } from '../models/enums/NutritionType';
 import { RecipeOverview } from '../models/Recipe';
 import { useInfiniteScroll } from './useInfiniteScroll';
-
-const recipes: RecipeOverview[] = Array.from({ length: 200 })
+// TODO REMOVE LATER AFTER FETCHING ACTUAL DATA
+const dummyRecipes: RecipeOverview[] = Array.from({ length: 200 })
   .fill(undefined)
   .map((_, index) => ({
     cookingTime: 23,
@@ -18,15 +18,39 @@ const recipes: RecipeOverview[] = Array.from({ length: 200 })
   }));
 
 const numberOfRecipesPerPage = 20;
+// TODO REMOVE LATER AFTER FETCHING ACTUAL DATA
+const getRecipesRange = (currentIndex: number) =>
+  dummyRecipes.slice(currentIndex * numberOfRecipesPerPage, (currentIndex + 1) * numberOfRecipesPerPage);
 
-export const useFetchRecipeOverviews = (targetElementRef: RefObject<HTMLDivElement>) => {
+export const useFetchRecipeOverviews = (targetElementRef: RefObject<HTMLElement>) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<any>();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [currentRecipes, setCurrentRecipes] = useState<RecipeOverview[]>(
-    recipes.slice(currentIndex * 10, (currentIndex + 1) * 10),
-  );
+  const [recipes, setRecipes] = useState<RecipeOverview[]>([]);
 
-  // TODO FETCH ACTUAL DATA
+  useEffect(() => {
+    const hasMore = currentIndex <= Math.floor(dummyRecipes.length / numberOfRecipesPerPage);
+    if (isLoading && !hasMore) {
+      return;
+    }
+
+    setIsLoading(true);
+    setError(undefined);
+    try {
+      // TODO FETCH ACTUAL DATA
+      new Promise((resolve) => {
+        setTimeout(() => {
+          const recipesToAdd = getRecipesRange(currentIndex);
+          resolve(recipesToAdd);
+        }, 2000);
+      }).then((data) => {
+        setRecipes((p) => [...p, ...(data as RecipeOverview[])]);
+        setIsLoading(false);
+      });
+    } catch (failedRequestError) {
+      setError(failedRequestError);
+    }
+  }, [currentIndex]);
 
   const handleInfiniteScroll = () => {
     if (!isLoading) {
@@ -34,22 +58,7 @@ export const useFetchRecipeOverviews = (targetElementRef: RefObject<HTMLDivEleme
     }
   };
 
-  useEffect(() => {
-    if (isLoading) {
-      return;
-    }
-
-    setIsLoading(true);
-    setTimeout(() => {
-      setCurrentRecipes((p) => [
-        ...p,
-        ...recipes.slice(currentIndex * numberOfRecipesPerPage, (currentIndex + 1) * numberOfRecipesPerPage),
-      ]);
-      setIsLoading(false);
-    }, 2000);
-  }, [currentIndex]);
-
   useInfiniteScroll(targetElementRef, handleInfiniteScroll);
 
-  return currentRecipes;
+  return { recipes, isLoading, error };
 };

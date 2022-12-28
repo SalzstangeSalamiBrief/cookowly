@@ -14,8 +14,10 @@ import styles from './index.module.css';
  */
 
 export default function Recipes() {
-  const infiniteScrollTriggerElement = useRef<HTMLDivElement>(null);
-  const recipes = useFetchRecipeOverviews(infiniteScrollTriggerElement);
+  const infiniteScrollTriggerElement = useRef<HTMLLIElement>(null);
+  const { recipes } = useFetchRecipeOverviews(infiniteScrollTriggerElement);
+
+  const scrollThreshold = Math.floor(recipes.length * (2 / 3));
 
   return (
     <>
@@ -23,14 +25,19 @@ export default function Recipes() {
         <title>Recipes</title>
       </Head>
       <ul className={styles['recipe-overview-list']}>
-        {recipes.map((recipe) => (
-          // {/* TODO MAYBE IN THE MIDDLE OF THE RECIPES? */}
-          <li className="[&>article]:h-full">
-            <RecipeOverviewCard key={recipe.id} recipe={recipe} />
-          </li>
-        ))}
+        {recipes.map((recipe, index) => {
+          const isThreshold = scrollThreshold === index;
+          return (
+            <li
+              className="[&>article]:h-full"
+              ref={isThreshold ? infiniteScrollTriggerElement : undefined}
+              key={recipe.id}
+            >
+              <RecipeOverviewCard recipe={recipe} />
+            </li>
+          );
+        })}
       </ul>
-      <div ref={infiniteScrollTriggerElement} />
     </>
   );
 }
