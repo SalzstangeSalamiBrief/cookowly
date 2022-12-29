@@ -3,9 +3,6 @@ export enum SortDirection {
   DESC,
 }
 
-// TODO REMOVE LATER: https://www.odata.org/getting-started/basic-tutorial
-// TODO REMOVE LATER: https://iterationinsights.com/article/how-to-paginate-an-odata-service-using-power-query/
-
 export type ODataFields<T> = (keyof T)[];
 
 export type ODataFilters<T> = [propertyName: keyof T, value: string][];
