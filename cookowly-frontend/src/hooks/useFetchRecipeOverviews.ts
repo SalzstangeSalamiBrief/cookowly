@@ -4,6 +4,7 @@ import { NutritionType } from '../models/enums/NutritionType';
 import { RecipeOverview } from '../models/Recipe';
 import { useInfiniteScroll } from './useInfiniteScroll';
 
+// TODO REMOVE LATER AFTER FETCHING ACTUAL DATA
 const dummyImages = [
   `https://images.unsplash.com/photo-1567529854338-fc097b962123?ixlib=rb-4.0.3
         &ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80`,
@@ -37,7 +38,7 @@ const dummyRecipes: RecipeOverview[] = Array.from({ length: 200 })
 
 const numberOfRecipesPerPage = 20;
 // TODO REMOVE LATER AFTER FETCHING ACTUAL DATA
-const getRecipesRange = (currentIndex: number) =>
+export const getRecipesRange = (currentIndex: number) =>
   dummyRecipes.slice(currentIndex * numberOfRecipesPerPage, (currentIndex + 1) * numberOfRecipesPerPage);
 
 interface IUseFetchRecipeOverviewsReturnValues {
@@ -63,11 +64,12 @@ interface IUseFetchRecipeOverviewsReturnValues {
  */
 export const useFetchRecipeOverviews = (
   targetElementRef: RefObject<HTMLElement>,
+  initialRecipes: RecipeOverview[] = [],
 ): IUseFetchRecipeOverviewsReturnValues => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<FailedToFetchDataError | undefined>();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [recipes, setRecipes] = useState<RecipeOverview[]>([]);
+  const [recipes, setRecipes] = useState<RecipeOverview[]>(initialRecipes);
 
   /**
    * executes if the current index changes
@@ -75,17 +77,17 @@ export const useFetchRecipeOverviews = (
    *  then additional data gets fetched
    */
   useEffect(() => {
-    // TODO: SINCE REACT 18 USE EFFECT GETS EXECUTED TWICE => THIS LEADS TO ERRORS IN DEVELOPMENT
-    // TODO   => CHECK FOR PRODUCTION
     const hasMore = currentIndex <= Math.floor(dummyRecipes.length / numberOfRecipesPerPage);
-    if (isLoading && !hasMore) {
+    const isInitialRender = currentIndex === 0;
+
+    if (isInitialRender || isLoading || !hasMore) {
       return;
     }
 
     setIsLoading(true);
     setError(undefined);
     try {
-      // TODO FETCH ACTUAL DATA
+      // TODO FETCH ACTUAL DATA => SAME AS GET_STATIC_PROPS
       new Promise((resolve) => {
         setTimeout(() => {
           const recipesToAdd = getRecipesRange(currentIndex);
