@@ -7,9 +7,8 @@ import { useFetchRecipeOverviews } from '../../hooks/useFetchRecipeOverviews';
 import styles from './index.module.css';
 /**
  * TODO
- *  3. Error State
- *  5. Get data from Backend
- *  6. Comments
+ *  1. Error State
+ *  2. Get data from Backend
  */
 
 export default function Recipes() {

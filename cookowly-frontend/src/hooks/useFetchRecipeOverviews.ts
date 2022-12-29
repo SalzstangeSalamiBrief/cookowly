@@ -1,4 +1,5 @@
 import { RefObject, useEffect, useState } from 'react';
+import { FailedToFetchDataError } from '../errors/FailedToFetchDataError';
 import { NutritionType } from '../models/enums/NutritionType';
 import { RecipeOverview } from '../models/Recipe';
 import { useInfiniteScroll } from './useInfiniteScroll';
@@ -50,7 +51,7 @@ interface IUseFetchRecipeOverviewsReturnValues {
   /**
    * the error of a fetch request that tried to load more data
    */
-  error: any;
+  error: FailedToFetchDataError | undefined;
 }
 
 /**
@@ -63,7 +64,7 @@ export const useFetchRecipeOverviews = (
   targetElementRef: RefObject<HTMLElement>,
 ): IUseFetchRecipeOverviewsReturnValues => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<any>();
+  const [error, setError] = useState<FailedToFetchDataError | undefined>();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [recipes, setRecipes] = useState<RecipeOverview[]>([]);
 
@@ -94,7 +95,7 @@ export const useFetchRecipeOverviews = (
         setIsLoading(false);
       });
     } catch (failedRequestError) {
-      setError(failedRequestError);
+      setError(new FailedToFetchDataError(JSON.stringify(failedRequestError)));
     }
   }, [currentIndex]);
 
