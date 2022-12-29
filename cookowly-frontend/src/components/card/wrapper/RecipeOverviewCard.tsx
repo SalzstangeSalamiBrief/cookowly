@@ -40,7 +40,10 @@ export function RecipeOverviewCard({
   recipe: RecipeOverview;
 }) {
   const cardTitle = (
-    <h1 className="text-primary-50 hover:text-primary-100 text-lg font-title font-bold">
+    <h1
+      className={`text-primary-50 hover:text-primary-100 text-lg font-title
+         font-bold whitespace-pre overflow-hidden text-ellipsis`}
+    >
       <Link href={`/recipes/${id}`}>{title}</Link>
     </h1>
   );

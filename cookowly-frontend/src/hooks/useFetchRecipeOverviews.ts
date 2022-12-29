@@ -30,7 +30,8 @@ const dummyRecipes: RecipeOverview[] = Array.from({ length: 200 })
     imageUrl: dummyImages[Math.floor(Math.random() * dummyImages.length)],
     likes: 300,
     nutritionType: NutritionType.VEGETARIAN,
-    title: 'Creamy Coconut Rice with Spiced Chickpeas',
+    title: `Creamy Coconut Rice with Spiced Chickpeasreamy Coconut 
+      Rice with Spiced Chickpeasreamy Coconut Rice with Spiced Chickpeas`,
     nutrition: 200,
   }));
 
