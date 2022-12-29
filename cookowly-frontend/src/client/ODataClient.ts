@@ -65,6 +65,7 @@ const getData = <T>(baseUrl: string) => {
   };
 };
 
+// TODO WAIT FOR DATA SEEDS TO BUILD THIS CLIENT
 export const oDataClient = <T>(path: string) => {
   const baseUrl = `${baseApiUrl}${path}`;
 

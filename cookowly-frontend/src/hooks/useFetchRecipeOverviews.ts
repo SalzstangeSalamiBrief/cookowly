@@ -38,13 +38,43 @@ const numberOfRecipesPerPage = 20;
 const getRecipesRange = (currentIndex: number) =>
   dummyRecipes.slice(currentIndex * numberOfRecipesPerPage, (currentIndex + 1) * numberOfRecipesPerPage);
 
-export const useFetchRecipeOverviews = (targetElementRef: RefObject<HTMLElement>) => {
+interface IUseFetchRecipeOverviewsReturnValues {
+  /**
+   * a number of recipe overviews
+   */
+  recipes: RecipeOverview[];
+  /**
+   * indicates if data is currently loaded or not
+   */
+  isLoading: boolean;
+  /**
+   * the error of a fetch request that tried to load more data
+   */
+  error: any;
+}
+
+/**
+ * This hook is used to fetch recipe overviews
+ *
+ * @param targetElementRef the ref of a html element
+ * @returns recipes and information about the state of this hook
+ */
+export const useFetchRecipeOverviews = (
+  targetElementRef: RefObject<HTMLElement>,
+): IUseFetchRecipeOverviewsReturnValues => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [recipes, setRecipes] = useState<RecipeOverview[]>([]);
 
+  /**
+   * executes if the current index changes
+   * If more elements are available and currently no elements are loaded,
+   *  then additional data gets fetched
+   */
   useEffect(() => {
+    // TODO: SINCE REACT 18 USE EFFECT GETS EXECUTED TWICE => THIS LEADS TO ERRORS IN DEVELOPMENT
+    // TODO   => CHECK FOR PRODUCTION
     const hasMore = currentIndex <= Math.floor(dummyRecipes.length / numberOfRecipesPerPage);
     if (isLoading && !hasMore) {
       return;
@@ -68,6 +98,9 @@ export const useFetchRecipeOverviews = (targetElementRef: RefObject<HTMLElement>
     }
   }, [currentIndex]);
 
+  /**
+   * handles a scroll event by incrementing the current index
+   */
   const handleInfiniteScroll = () => {
     if (!isLoading) {
       setCurrentIndex((p) => p + 1);

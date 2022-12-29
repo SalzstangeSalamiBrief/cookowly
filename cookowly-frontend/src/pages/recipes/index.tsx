@@ -16,7 +16,10 @@ export default function Recipes() {
   const infiniteScrollTriggerElement = useRef<HTMLLIElement>(null);
   const { recipes, isLoading } = useFetchRecipeOverviews(infiniteScrollTriggerElement);
 
-  const scrollThreshold = Math.floor(recipes.length * (2 / 3));
+  /**
+   * the index of the item that is used for intersection
+   */
+  const scrollTargetIndex = Math.floor(recipes.length * (2 / 3));
 
   return (
     <>
@@ -25,7 +28,7 @@ export default function Recipes() {
       </Head>
       <ul className={styles['recipe-overview-list']}>
         {recipes.map((recipe, index) => {
-          const isThreshold = scrollThreshold === index;
+          const isThreshold = scrollTargetIndex === index;
           return (
             <li
               className="[&>article]:h-full"

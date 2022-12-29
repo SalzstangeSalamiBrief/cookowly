@@ -6,6 +6,13 @@ const options = {
   threshold: 0,
 };
 
+/**
+ * This hooks i used to handle infinite scrolling.
+ * If the passed element intersects with the view, then the passed callback gets executed
+ *
+ * @param targetElementRef the element to use for calculations
+ * @param callback the callback to execute
+ */
 export const useInfiniteScroll = (targetElementRef: RefObject<HTMLElement>, callback: () => void) => {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {

@@ -1,17 +1,24 @@
-import { ChartBarSquareIcon, ClockIcon, HandThumbUpIcon, PuzzlePieceIcon } from '@heroicons/react/24/outline';
+import { ChartBarSquareIcon, ClockIcon, HandThumbUpIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
 import { NutritionType } from '../../../models/enums/NutritionType';
 import { RecipeOverview } from '../../../models/Recipe';
+import { CookingPotIcon } from '../../icons/CookingPotIcon';
 import { Text } from '../../Text/Text';
 import { Card } from '../Card';
 
 import styles from '../Card.module.css';
 
+/**
+ * Transforms the nutrition type enum into a string
+ *
+ * @param nutritionType the type of nutrition
+ * @returns the string representation of the nutrition types
+ */
 const getNutritionTypeString = (nutritionType: NutritionType) => {
   switch (nutritionType) {
     case NutritionType.CARNIVORE:
-      return 'canivore';
+      return 'carnivore';
     case NutritionType.VEGAN:
       return 'vegan';
     case NutritionType.VEGETARIAN:
@@ -21,6 +28,12 @@ const getNutritionTypeString = (nutritionType: NutritionType) => {
   }
 };
 
+/**
+ * Card wrapper to display data of a recipe
+ *
+ * @param RecipeOverview
+ * @returns a card for recipe overview
+ */
 export function RecipeOverviewCard({
   recipe: { description, title, imageUrl, nutrition, cookingTime, likes, id, nutritionType },
 }: {
@@ -58,7 +71,10 @@ export function RecipeOverviewCard({
       </dt>
       <dd className="sr-only">{likes}</dd>
       <dt className="flex align-middle" aria-label={`Type of nutrition: ${getNutritionTypeString(nutritionType)}`}>
-        <PuzzlePieceIcon className="mr-2 w-6 h-6" /> {getNutritionTypeString(nutritionType)}
+        <span className="block h-6 w-6 mr-2">
+          <CookingPotIcon />
+        </span>
+        {getNutritionTypeString(nutritionType)}
       </dt>
       <dd className="sr-only">{getNutritionTypeString(nutritionType)}</dd>
     </dl>
