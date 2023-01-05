@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.OData.Query;
 
 namespace Cookowly.Presentation.Controllers;
 
-[Authorize]
 [ApiController]
 [Route("dish")]
 public class DishController
@@ -30,6 +29,7 @@ public class DishController
         return await useCase.Handle(id, cancellationToken);
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<CreateDishResponse> Create(
         [FromServices] CreateDishUseCase useCase,
@@ -38,7 +38,8 @@ public class DishController
     {
         return await useCase.Handle(request, cancellationToken);
     }
-
+    
+    [Authorize]
     [HttpPut("{id:guid}")]
     public async Task<UpdateDishResponse> Update(
         [FromServices] UpdateDishUseCase useCase,
@@ -49,6 +50,7 @@ public class DishController
         return await useCase.Handle(id, request, cancellationToken);
     }
 
+    [Authorize]
     [HttpDelete("{id:guid}")]
     public async Task Delete(
         [FromServices] DeleteDishUseCase useCase,
