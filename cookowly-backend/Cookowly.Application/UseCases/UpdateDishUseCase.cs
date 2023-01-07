@@ -1,4 +1,5 @@
 ﻿using Cookowly.Application.Contracts;
+using Cookowly.Application.Contracts.Repositories;
 using Cookowly.Application.Exceptions;
 using Cookowly.Application.Models.Request;
 using Cookowly.Application.Models.Response;
@@ -7,16 +8,23 @@ using Mapster;
 
 namespace Cookowly.Application.UseCases;
 
-public class UpdateDishUseCase : IUpdateUseCase<UpdateDishRequest, UpdateDishResponse>
+public class UpdateDishUseCase
 {
-    private readonly IRepository<Dish> _dishRepository;
+    private readonly IDishRepository _dishRepository;
+    private readonly IExecutionTimeAccessor _executionTimeAccessor;
+    private readonly IRequestUserAccessor _requestUserAccessor;
 
-    public UpdateDishUseCase(IRepository<Dish> dishRepository)
+    public UpdateDishUseCase(IDishRepository dishRepository,
+        IExecutionTimeAccessor executionTimeAccessor,
+        IRequestUserAccessor requestUserAccessor)
     {
         _dishRepository = dishRepository;
+        _executionTimeAccessor = executionTimeAccessor;
+        _requestUserAccessor = requestUserAccessor;
     }
 
-    public async Task<UpdateDishResponse> Handle(Guid id, UpdateDishRequest request, CancellationToken cancellationToken = default)
+    public async Task<UpdateDishResponse> Handle(Guid id, UpdateDishRequest request,
+        CancellationToken cancellationToken = default)
     {
         var dishToUpdate = await _dishRepository.FirstOrDefault(dish => dish.Id == id, cancellationToken);
         if (dishToUpdate is null)
@@ -26,7 +34,8 @@ public class UpdateDishUseCase : IUpdateUseCase<UpdateDishRequest, UpdateDishRes
 
         dishToUpdate.Title = request.Title;
         dishToUpdate.Description = request.Description;
-        dishToUpdate.Modified = DateTime.UtcNow;
+        dishToUpdate.ModifiedById = _requestUserAccessor.Id;
+        dishToUpdate.Modified = _executionTimeAccessor.ExecutionTime;
         return dishToUpdate.Adapt<UpdateDishResponse>();
     }
 }

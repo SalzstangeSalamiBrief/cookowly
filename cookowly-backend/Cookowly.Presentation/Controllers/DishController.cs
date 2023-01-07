@@ -1,7 +1,7 @@
 using Cookowly.Application.Models.Request;
 using Cookowly.Application.Models.Response;
 using Cookowly.Application.UseCases;
-using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 
@@ -9,7 +9,7 @@ namespace Cookowly.Presentation.Controllers;
 
 [ApiController]
 [Route("dish")]
-public class DishController : ControllerBase
+public class DishController
 {
     [EnableQuery]
     [HttpGet]
@@ -29,6 +29,7 @@ public class DishController : ControllerBase
         return await useCase.Handle(id, cancellationToken);
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<CreateDishResponse> Create(
         [FromServices] CreateDishUseCase useCase,
@@ -37,7 +38,8 @@ public class DishController : ControllerBase
     {
         return await useCase.Handle(request, cancellationToken);
     }
-
+    
+    [Authorize]
     [HttpPut("{id:guid}")]
     public async Task<UpdateDishResponse> Update(
         [FromServices] UpdateDishUseCase useCase,
@@ -48,6 +50,7 @@ public class DishController : ControllerBase
         return await useCase.Handle(id, request, cancellationToken);
     }
 
+    [Authorize]
     [HttpDelete("{id:guid}")]
     public async Task Delete(
         [FromServices] DeleteDishUseCase useCase,

@@ -5,7 +5,7 @@ using Cookowly.Domain.Entities;
 
 namespace Cookowly.Application.UseCases;
 
-public class QueryDishesUseCase : IQueryableUseCase<GetDishResponse>
+public class QueryDishesUseCase
 {
     private readonly IQueryableRepository<Dish> _queryableDishRepository;
 
