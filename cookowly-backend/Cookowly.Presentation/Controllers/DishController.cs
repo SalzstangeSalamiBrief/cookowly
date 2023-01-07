@@ -1,24 +1,27 @@
 using Cookowly.Application.Models.Request;
 using Cookowly.Application.Models.Response;
 using Cookowly.Application.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 
 namespace Cookowly.Presentation.Controllers;
 
 [ApiController]
 [Route("dish")]
-public class DishController : ControllerBase
+public class DishController
 {
+    [EnableQuery]
     [HttpGet]
-    public async Task<IEnumerable<GetDishResponse>> GetAll(
-        [FromServices] GetAllDishesUseCase useCase,
-        CancellationToken cancellationToken)
+    public IQueryable<GetDishResponse> Query(
+        [FromServices] QueryDishesUseCase useCase)
     {
-        return await useCase.Handle(cancellationToken);
+        return useCase.Handle();
     }
 
+    [EnableQuery]
     [HttpGet("{id:guid}")]
-    public async Task<GetDishResponse> Get(
+    public async Task<GetDishResponse> GetById(
         [FromServices] GetDishUseCase useCase,
         [FromRoute] Guid id,
         CancellationToken cancellationToken)
@@ -26,6 +29,7 @@ public class DishController : ControllerBase
         return await useCase.Handle(id, cancellationToken);
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<CreateDishResponse> Create(
         [FromServices] CreateDishUseCase useCase,
@@ -34,7 +38,8 @@ public class DishController : ControllerBase
     {
         return await useCase.Handle(request, cancellationToken);
     }
-
+    
+    [Authorize]
     [HttpPut("{id:guid}")]
     public async Task<UpdateDishResponse> Update(
         [FromServices] UpdateDishUseCase useCase,
@@ -45,6 +50,7 @@ public class DishController : ControllerBase
         return await useCase.Handle(id, request, cancellationToken);
     }
 
+    [Authorize]
     [HttpDelete("{id:guid}")]
     public async Task Delete(
         [FromServices] DeleteDishUseCase useCase,
