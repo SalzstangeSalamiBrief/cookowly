@@ -42,7 +42,7 @@ export function RecipeOverviewCard({
   const cardTitle = (
     <h1
       className={`text-primary-50 hover:text-primary-100 text-lg font-title
-         font-bold whitespace-pre overflow-hidden text-ellipsis`}
+         font-bold whitespace-nowrap overflow-hidden text-ellipsis`}
     >
       <Link href={`/recipes/${id}`}>{title}</Link>
     </h1>
@@ -51,10 +51,15 @@ export function RecipeOverviewCard({
   const cardBody = (
     <div className="flex flex-col gap-4">
       <div className="relative w-full h-56 ">
-        <Image src={imageUrl} alt={`image of the recipe ${title}`} fill className="object-contain" />
+        <Image
+          src={imageUrl}
+          alt={`image of the recipe ${title}`}
+          fill
+          className="object-contain transition-transform hover:scale-110"
+        />
       </div>
       <Text color="text-neutral-200">
-        <span className={`block overflow-hidden text-ellipsis ${styles['clamped-description']}`}>{description}</span>
+        <span className={`block overflow-hidden text-ellipsis ${styles['clamped-description']} `}>{description}</span>
       </Text>
     </div>
   );

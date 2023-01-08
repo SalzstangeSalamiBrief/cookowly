@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
 import { ICardProps } from './CardProps';
+
+import styles from './Card.module.css';
 
 /**
  * A card that contains a title, body and footer
@@ -7,8 +10,21 @@ import { ICardProps } from './CardProps';
  * @returns a card
  */
 export function Card({ body, footer, title }: ICardProps) {
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    window.requestAnimationFrame(() => {
+      console.log('REQUEST');
+      setIsMounted(true);
+    });
+  }, []);
+
   return (
-    <article className="flex flex-col bg-neutral-800 rounded-md gap-4 p-4">
+    <article
+      className={`${styles.card} ${
+        isMounted ? styles['card-enter'] : ''
+      } flex flex-col bg-neutral-800 rounded-md gap-4 p-4`}
+    >
       {title}
       {body}
       {footer && footer}
