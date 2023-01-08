@@ -13,10 +13,7 @@ export function Card({ body, footer, title }: ICardProps) {
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
-    window.requestAnimationFrame(() => {
-      console.log('REQUEST');
-      setIsMounted(true);
-    });
+    window.requestAnimationFrame(() => setIsMounted(true));
   }, []);
 
   return (
