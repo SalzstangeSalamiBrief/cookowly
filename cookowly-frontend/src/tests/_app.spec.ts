@@ -2,36 +2,13 @@ import { expect, test } from '@playwright/test';
 // import { navigationLinks } from '../components/navigation/Navigation';
 import { getDataPWAttribute } from './utilities';
 
-const breakpointsShowingSidebar = [1280, 1536];
-const breakpointsHidingSidebar = [480, 640, 768, 1024];
 const breakpointsForIconButtonsInsideNavigation = [480, 640];
 const breakpointsForButtonsInsideNavigation = [768, 1024, 1280, 1536];
-const sidebarLocator = getDataPWAttribute('sidebar');
 const navigationLocator = getDataPWAttribute('navigation');
 
 test.describe('Should test layout', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-  });
-
-  breakpointsShowingSidebar.forEach((breakpoint) => {
-    test(`Should display sidebar on breakpoint '${breakpoint}'`, async ({ page }) => {
-      await page.setViewportSize({ width: breakpoint, height: 1080 });
-      const sidebar = page.locator(sidebarLocator);
-      await expect(sidebar).toBeVisible();
-      await expect(sidebar).toHaveCount(1); // check for existence
-      const sidebarHeader = sidebar.locator('header');
-      await expect(sidebarHeader).toBeVisible();
-      await expect(sidebarHeader).toHaveCount(1); // check for existence
-    });
-  });
-
-  breakpointsHidingSidebar.forEach((breakpoint) => {
-    test(`Should not render sidebar on breakpoint '${breakpoint}'`, async ({ page }) => {
-      await page.setViewportSize({ width: breakpoint, height: 1080 });
-      const sidebar = page.locator(sidebarLocator);
-      await sidebar.isHidden();
-    });
   });
 
   breakpointsForButtonsInsideNavigation.forEach((breakpoint) => {

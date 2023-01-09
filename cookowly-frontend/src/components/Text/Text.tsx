@@ -4,7 +4,7 @@ import { getTextStyles } from './TextUtilities';
 /**
  * Renders text based on the passed props.
  *
- * Default values:
+ * Default values of props:
  *  - type: content
  *  - font weight: 400
  *  - isItalic: false
@@ -14,9 +14,9 @@ import { getTextStyles } from './TextUtilities';
  * @returns an element that contains text
  */
 export function Text(props: ITextProps) {
-  const { children, as = 'p' } = props;
+  const { children, asTag = 'p' } = props;
   const classes = getTextStyles(props);
-  const As = as;
+  const AsTag = asTag;
 
-  return <As className={classes}>{children}</As>;
+  return <AsTag className={classes}>{children}</AsTag>;
 }

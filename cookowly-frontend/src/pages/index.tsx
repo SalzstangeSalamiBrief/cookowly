@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Button } from '../components/buttons/Button';
 import { IconButton } from '../components/buttons/IconButton';
 
-function Home() {
+export default function Home() {
   return (
     <>
       <Head>
@@ -202,5 +202,3 @@ function Home() {
     </>
   );
 }
-
-export default Home;

@@ -1,0 +1,15 @@
+.clamped-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    hyphens: auto;
+}
+
+.card{
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.card-enter{
+    opacity: 1;
+}

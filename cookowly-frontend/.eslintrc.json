@@ -43,6 +43,9 @@
       "error",
       { "devDependencies": true, "optionalDependencies": false, "peerDependencies": false }
     ],
-    "function-paren-newline": "off"
+    "function-paren-newline": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }

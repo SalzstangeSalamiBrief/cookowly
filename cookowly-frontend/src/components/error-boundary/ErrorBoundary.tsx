@@ -35,11 +35,11 @@ export class ErrorBoundary extends Component<IProps, IState> {
           my-4 mx-auto w-full md:w-1/2 lg:w-1/3 xl:w-1/4
           h-fit p-4 text-danger-50 bg-danger-900 rounded-md`}
         >
-          <Text type="heading" as="h1" margin="my-4" size="xl" color="text-primary-50">
+          <Text type="heading" asTag="h1" margin="my-4" size="xl" color="text-primary-50">
             Something went wrong.
           </Text>
           <div className="flex justify-end">
-            <Button text="Try again" as="nextLink" href="/" variant="ghost" />
+            <Button text="Try again" asTag="nextLink" href="/" variant="ghost" />
           </div>
         </div>
       );

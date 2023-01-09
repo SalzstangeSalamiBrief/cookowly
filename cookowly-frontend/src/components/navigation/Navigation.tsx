@@ -35,15 +35,15 @@ export function Navigation() {
         {navigationLinks.map(({ displayName, icon, path }) => (
           <li key={`${path}-${displayName}`} className="flex justify-center md:justify-start md:[&>a]:w-full">
             {isMd ? (
-              <Button text={displayName} as="nextLink" icon={icon} variant="action" href={path} />
+              <Button text={displayName} asTag="nextLink" icon={icon} variant="action" href={path} />
             ) : (
-              <IconButton ariaLabel={displayName} as="nextLink" icon={icon} variant="action" href={path} />
+              <IconButton ariaLabel={displayName} asTag="nextLink" icon={icon} variant="action" href={path} />
             )}
           </li>
         ))}
-        <li className="mt-auto">
+        <li className="mt-auto md:[&>a]:w-full">
           {isMd ? (
-            <Button text="Dean Dixon" as="nextLink" href="/" variant="action" icon={<UserIcon />} />
+            <Button text="Dean Dixon" asTag="nextLink" href="/" variant="action" icon={<UserIcon />} />
           ) : (
             <IconButton ariaLabel="Your profile" icon={<UserIcon />} variant="action" />
           )}
@@ -55,8 +55,7 @@ export function Navigation() {
 
   return (
     <nav
-      className="navigation p-2 md:p-4 border-r border-neutral-50/alpha-10
-        sticky top-0 max-h-screen flex flex-col items-center "
+      className="p-2 md:p-4 border-r border-neutral-50/alpha-10 sticky top-0 max-h-screen flex flex-col items-center "
       aria-labelledby={ariaLabelId}
       data-pw="navigation"
     >

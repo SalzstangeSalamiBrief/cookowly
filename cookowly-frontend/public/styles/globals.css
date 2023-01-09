@@ -48,15 +48,30 @@ div#__next>div {
   min-height: 100vh;
 }
 
-.sidebar,
-.navigation {
-  max-width: 500px;
+.app-layout {
+  --side-content-width: 75px;
+  --max-width: min(100%, 1920px);
+
+  width: 100%;
+  max-width: var(--max-width);
+
+  display: grid;
+  grid-template-columns: var(--side-content-width) calc(var(--max-width) - var(--side-content-width));
 }
 
-.app-layout {
-  width: 100%;
-  max-width: min(100%, 1920px);
+@media (min-width: 768px) {
+  .app-layout {
+    --side-content-width: 250px;
+  }
 }
+
+@media (min-width: 1280px) {
+  .app-layout {
+    --side-content-width: 300px;
+    grid-template-columns: var(--side-content-width) calc(var(--max-width) - var(--side-content-width));
+  }
+}
+
 
 .custom-scrollbar {
   --scrollbar-foreground: hsl(0, 0%, 49%);

@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { Size } from '../../models/Size';
 
 export type ButtonVariants = 'primary' | 'ghost' | 'action';
@@ -24,7 +25,7 @@ interface IBaseButtonProps {
   /**
    * Renders the element as button, anchor or next link (optional)
    */
-  as?: ButtonTags;
+  asTag?: ButtonTags;
   /**
    * the style variant of the button (optional)
    */
@@ -58,7 +59,7 @@ export interface IButtonProps extends IBaseButtonProps {
   /**
    * the content of the button
    */
-  text: string;
+  text: string | ReactElement;
   /**
    * the icon to render (optional)
    */

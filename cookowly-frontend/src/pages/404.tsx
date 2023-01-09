@@ -10,7 +10,7 @@ export default function Custom404page() {
       <Text margin="my-4">The requested page does not exist.</Text>
       <div className="flex">
         <Button text="Try again" onClick={() => document.location.reload()} variant="action" />
-        <Button text="Home" as="nextLink" href="/" variant="action" />
+        <Button text="Home" asTag="nextLink" href="/" variant="action" />
       </div>
     </div>
   );
